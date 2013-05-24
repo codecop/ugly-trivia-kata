@@ -7,10 +7,9 @@ import java.util.List;
 public class Game {
     private static final int MAXIMUM_NUMBER_PLAYERS = 6;
     public static final int NUMBER_QUESTIONS = 50;
-    public static final int NUMBER_PLACES = 12;
 
     private List<Player> players = new ArrayList<Player>();               // players inconsistent with places
-    private int[] places = new int[MAXIMUM_NUMBER_PLAYERS];                               //   places to sit in 0-11
+    private Place[] places = new Place[MAXIMUM_NUMBER_PLAYERS];                               //   places to sit in 0-11
     private boolean[] inPenaltyBox = new boolean[MAXIMUM_NUMBER_PLAYERS];
 
     private LinkedList<String> popQuestions = new LinkedList<String>();
@@ -25,6 +24,8 @@ public class Game {
         createQuestions();
     }
 
+    // TODO move questions, categories and everything into place. place knows its category and its questions or the category know its question.
+
     private void createQuestions() {
         for (int i = 0; i < NUMBER_QUESTIONS; i++) {
             popQuestions.addLast("Pop Question " + i);
@@ -38,6 +39,7 @@ public class Game {
         // no check for 6
 
         players.add(new Player(playerName));
+        places[players.size()-1] = new Place();
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
     }
@@ -71,14 +73,9 @@ public class Game {
     }
 
     private void moveAndAskCurrentPlayerFor(int eyesOfDice) {
-        advanceCurrentPlayerBy(eyesOfDice);
+        places[currentPlayer].advanceCurrentPlayerBy(eyesOfDice);
+        System.out.println(players.get(currentPlayer) + "'s new location is " + places[currentPlayer].getPlace());
         askQuestion();
-    }
-
-    private void advanceCurrentPlayerBy(int roll) {
-        places[currentPlayer] = places[currentPlayer] + roll;
-        if (places[currentPlayer] > NUMBER_PLACES -1) places[currentPlayer] = places[currentPlayer] - NUMBER_PLACES;
-        System.out.println(players.get(currentPlayer) + "'s new location is " + places[currentPlayer]);
     }
 
     private void askQuestion() {
@@ -94,9 +91,8 @@ public class Game {
             System.out.println(rockQuestions.removeFirst());
     }
 
-
     private String currentCategory() {
-        int place = places[currentPlayer];
+        int place = places[currentPlayer].getPlace();
         return currentCategory(place % 4);
     }
 
