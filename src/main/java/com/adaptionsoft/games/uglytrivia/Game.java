@@ -8,12 +8,9 @@ public class Game {
     private static final int MAXIMUM_NUMBER_PLAYERS = 6;
     public static final int NUMBER_QUESTIONS = 50;
     public static final int NUMBER_PLACES = 12;
-    public static final int NEEDED_COINS_TO_WIN = 6;
 
-    private List<String> players = new ArrayList<String>();               // players inconsistent with places
-    // TODO have class player with all its meta data inside, no indexing
+    private List<Player> players = new ArrayList<Player>();               // players inconsistent with places
     private int[] places = new int[MAXIMUM_NUMBER_PLAYERS];                               //   places to sit in 0-11
-    private int[] purses = new int[MAXIMUM_NUMBER_PLAYERS];
     private boolean[] inPenaltyBox = new boolean[MAXIMUM_NUMBER_PLAYERS];
 
     private LinkedList<String> popQuestions = new LinkedList<String>();
@@ -40,7 +37,7 @@ public class Game {
     public void add(String playerName) {
         // no check for 6
 
-        players.add(playerName);
+        players.add(new Player(playerName));
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
     }
@@ -87,7 +84,7 @@ public class Game {
     private void askQuestion() {
         System.out.println("The category is " + currentCategory());
 
-        if (currentCategory().equals("Pop"))
+        if (currentCategory().equals("Pop"))                               // TODO categories? enum?
             System.out.println(popQuestions.removeFirst());
         if (currentCategory().equals("Science"))
             System.out.println(scienceQuestions.removeFirst());
@@ -99,19 +96,15 @@ public class Game {
 
 
     private String currentCategory() {
-        if (places[currentPlayer] == 0) return "Pop";
-        if (places[currentPlayer] == 4) return "Pop";
-        if (places[currentPlayer] == 8) return "Pop";
-        if (places[currentPlayer] == 1) return "Science";
-        if (places[currentPlayer] == 5) return "Science";
-        if (places[currentPlayer] == 9) return "Science";
-        if (places[currentPlayer] == 2) return "Sports";
-        if (places[currentPlayer] == 6) return "Sports";
-        if (places[currentPlayer] == 10) return "Sports";
-        if (places[currentPlayer] == 3) return "Rock";
-        if (places[currentPlayer] == 7) return "Rock";
-        if (places[currentPlayer] == 11) return "Rock";
+        int place = places[currentPlayer];
+        return currentCategory(place % 4);
+    }
 
+    private String currentCategory(int place) {
+        if (place == 0) return "Pop";
+        if (place == 1) return "Science";
+        if (place == 2) return "Sports";
+        if (place == 3) return "Rock";
         return "Rock"; // TODO throw new IllegalStateException("Current player is out of places");
     }
 
@@ -137,9 +130,9 @@ public class Game {
     }
 
     private boolean playerWinsCoin() {
-        playerGetsCoin();
+        players.get(currentPlayer).playerGetsCoin();
 
-        boolean notWinner = didPlayerNotWin();
+        boolean notWinner = players.get(currentPlayer).didPlayerNotWin();
         changeCurrentPlayer();
 
         return notWinner;
@@ -148,12 +141,6 @@ public class Game {
     private void changeCurrentPlayer() {
         currentPlayer++;
         if (currentPlayer == players.size()) currentPlayer = 0;
-    }
-
-    private void playerGetsCoin() {
-        System.out.println("Answer was correct!!!!");
-        purses[currentPlayer]++;
-        System.out.println(players.get(currentPlayer) + " now has " + purses[currentPlayer] + " Gold Coins.");
     }
 
     public boolean wrongAnswer() {
@@ -168,8 +155,4 @@ public class Game {
         inPenaltyBox[currentPlayer] = true;
     }
 
-
-    private boolean didPlayerNotWin() {
-        return !(purses[currentPlayer] == NEEDED_COINS_TO_WIN);
-    }
 }
