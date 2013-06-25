@@ -9,8 +9,6 @@ public class Game {
     public static final int NUMBER_QUESTIONS = 50;
 
     private List<Player> players = new ArrayList<Player>();               // players inconsistent with places
-    private Place[] places = new Place[MAXIMUM_NUMBER_PLAYERS];                               //   places to sit in 0-11
-    private boolean[] inPenaltyBox = new boolean[MAXIMUM_NUMBER_PLAYERS];
 
     private LinkedList<String> popQuestions = new LinkedList<String>();
     private LinkedList<String> scienceQuestions = new LinkedList<String>();
@@ -18,7 +16,7 @@ public class Game {
     private LinkedList<String> rockQuestions = new LinkedList<String>();
 
     private int currentPlayer;
-    private boolean isGettingOutOfPenaltyBox;
+    private boolean isGettingOutOfPenaltyBox; // TODO state is global not for each player? player can never come out of penalty box?
 
     public Game() {
         createQuestions();
@@ -39,16 +37,15 @@ public class Game {
         // no check for 6
 
         players.add(new Player(playerName));
-        places[players.size()-1] = new Place();
         System.out.println(playerName + " was added");
         System.out.println("They are player number " + players.size());
     }
 
     public void playCurrentPlayer(int eyesOfDice) {
-        System.out.println(players.get(currentPlayer) + " is the current player");
+        System.out.println(getCurrentPlayer() + " is the current player");
         System.out.println("They have rolled a " + eyesOfDice);
 
-        if (inPenaltyBox[currentPlayer]) {
+        if (getCurrentPlayer().isInPenaltyBox()) {
             handleCurrentPlayerPenalty(eyesOfDice);
         } else {
             moveAndAskCurrentPlayerFor(eyesOfDice);
@@ -59,12 +56,12 @@ public class Game {
     private void handleCurrentPlayerPenalty(int eyesOfDice) {
         if (isOdd(eyesOfDice)) {
             isGettingOutOfPenaltyBox = true;
-            System.out.println(players.get(currentPlayer) + " is getting out of the penalty box");
+            System.out.println(getCurrentPlayer() + " is getting out of the penalty box");
 
             moveAndAskCurrentPlayerFor(eyesOfDice);
         } else {
             isGettingOutOfPenaltyBox = false;
-            System.out.println(players.get(currentPlayer) + " is not getting out of the penalty box");
+            System.out.println(getCurrentPlayer() + " is not getting out of the penalty box");
         }
     }
 
@@ -73,8 +70,7 @@ public class Game {
     }
 
     private void moveAndAskCurrentPlayerFor(int eyesOfDice) {
-        places[currentPlayer].advanceCurrentPlayerBy(eyesOfDice);
-        System.out.println(players.get(currentPlayer) + "'s new location is " + places[currentPlayer].getPlace());
+        getCurrentPlayer().advanceBy(eyesOfDice);
         askQuestion();
     }
 
@@ -92,8 +88,12 @@ public class Game {
     }
 
     private String currentCategory() {
-        int place = places[currentPlayer].getPlace();
+        int place = getCurrentPlayer().getPlace();
         return currentCategory(place % 4);
+    }
+
+    private Player getCurrentPlayer() {
+        return players.get(currentPlayer);
     }
 
     private String currentCategory(int place) {
@@ -105,7 +105,7 @@ public class Game {
     }
 
     public boolean correctAnswer() {
-        if (inPenaltyBox[currentPlayer]) {
+        if (getCurrentPlayer().isInPenaltyBox()) {
             return correctAnswerInPenaltyBox();
         } else {
             return playerWinsCoin();
@@ -126,9 +126,9 @@ public class Game {
     }
 
     private boolean playerWinsCoin() {
-        players.get(currentPlayer).answeredCorrect();
+        getCurrentPlayer().answeredCorrect();
 
-        boolean notWinner = players.get(currentPlayer).didPlayerNotWin();
+        boolean notWinner = getCurrentPlayer().didPlayerNotWin();
         changeCurrentPlayer();
 
         return notWinner;
@@ -141,14 +141,9 @@ public class Game {
 
     public boolean wrongAnswer() {
         System.out.println("Question was incorrectly answered");
-        goToPenaltyBox();
+        getCurrentPlayer().goToPenaltyBox();
 
         return playerDoesNotWinCoin();
-    }
-
-    private void goToPenaltyBox() {
-        System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
-        inPenaltyBox[currentPlayer] = true;
     }
 
 }
