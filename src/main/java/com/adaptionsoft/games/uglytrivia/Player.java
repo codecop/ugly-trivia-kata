@@ -62,4 +62,7 @@ public class Player {
         return gettingOutOfPenaltyBox;
     }
 
+    public String getName() {
+        return name;
+    }
 }

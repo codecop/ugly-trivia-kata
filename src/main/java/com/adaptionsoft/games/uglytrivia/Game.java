@@ -1,21 +1,17 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Game {
-    private static final int MAXIMUM_NUMBER_PLAYERS = 6;
     public static final int NUMBER_QUESTIONS = 50;
 
-    private List<Player> players = new ArrayList<Player>();               // players inconsistent with places
+    private final Players players = new Players();
 
     private LinkedList<String> popQuestions = new LinkedList<String>();
     private LinkedList<String> scienceQuestions = new LinkedList<String>();
     private LinkedList<String> sportsQuestions = new LinkedList<String>();
     private LinkedList<String> rockQuestions = new LinkedList<String>();
 
-    private int currentPlayer;
 
     public Game() {
         createQuestions();
@@ -33,11 +29,7 @@ public class Game {
     }
 
     public void add(String playerName) {
-        // no check for 6
-
-        players.add(new Player(playerName));
-        System.out.println(playerName + " was added");
-        System.out.println("They are player number " + players.size());
+        players.add(playerName);
     }
 
     public void playCurrentPlayer(int eyesOfDice) {
@@ -89,7 +81,7 @@ public class Game {
     }
 
     private Player getCurrentPlayer() {
-        return players.get(currentPlayer);
+        return players.getCurrentPlayer();
     }
 
     private String currentCategory(int place) {
@@ -117,7 +109,7 @@ public class Game {
     }
 
     private boolean playerDoesNotWinCoin() {
-        changeCurrentPlayer();
+        players.changeCurrentPlayer();
         return true;
     }
 
@@ -125,14 +117,9 @@ public class Game {
         getCurrentPlayer().answeredCorrect();
 
         boolean notWinner = getCurrentPlayer().didPlayerNotWin();
-        changeCurrentPlayer();
+        players.changeCurrentPlayer();
 
         return notWinner;
-    }
-
-    private void changeCurrentPlayer() {
-        currentPlayer++;
-        if (currentPlayer == players.size()) currentPlayer = 0;
     }
 
     public boolean wrongAnswer() {
