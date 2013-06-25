@@ -10,19 +10,15 @@ public class Player {
         this.name = name;
     }
 
-
-    void playerGetsCoin() {
+    void answeredCorrect() {
         System.out.println("Answer was correct!!!!");
         purse++;
         System.out.println(name + " now has " + purse + " Gold Coins.");
     }
 
-
     boolean didPlayerNotWin() {
         return !(purse == NEEDED_COINS_TO_WIN);
     }
-    // TODO could add test case for "did not win" already now
-
 
     @Override
     public String toString() {

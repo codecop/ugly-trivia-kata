@@ -16,23 +16,23 @@ public class PlayerTest {
 
     @Test
     public void newPlayerWithTooFewCoinsShouldNotWin() {
-        player.playerGetsCoin();
-        player.playerGetsCoin();
-        player.playerGetsCoin();
-        player.playerGetsCoin();
-        player.playerGetsCoin();
+        player.answeredCorrect();
+        player.answeredCorrect();
+        player.answeredCorrect();
+        player.answeredCorrect();
+        player.answeredCorrect();
 
         assertTrue("new player won", player.didPlayerNotWin());
     }
 
     @Test
     public void newPlayerWith6CoinsShouldNotWin() {
-        player.playerGetsCoin();
-        player.playerGetsCoin();
-        player.playerGetsCoin();
-        player.playerGetsCoin();
-        player.playerGetsCoin();
-        player.playerGetsCoin();
+        player.answeredCorrect();
+        player.answeredCorrect();
+        player.answeredCorrect();
+        player.answeredCorrect();
+        player.answeredCorrect();
+        player.answeredCorrect();
 
         assertFalse("new player did not won", player.didPlayerNotWin());
     }

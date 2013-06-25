@@ -126,7 +126,7 @@ public class Game {
     }
 
     private boolean playerWinsCoin() {
-        players.get(currentPlayer).playerGetsCoin();
+        players.get(currentPlayer).answeredCorrect();
 
         boolean notWinner = players.get(currentPlayer).didPlayerNotWin();
         changeCurrentPlayer();
