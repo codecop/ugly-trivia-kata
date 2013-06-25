@@ -6,7 +6,7 @@ public class Player {
     private final String name;
     private final Place place = new Place();
     private boolean inPenaltyBox;
-
+    private static boolean gettingOutOfPenaltyBox; // TODO state is global not for each player? player can never come out of penalty box?
     private int purse;
 
     public Player(String name) {
@@ -47,4 +47,19 @@ public class Player {
     }
 
     // TODO add logic to reset penalty box - bug?
+
+    public void setGettingOutOfPenaltyBox(boolean gettingOut) {
+        gettingOutOfPenaltyBox = gettingOut;
+        String maybe = "not ";
+        if (gettingOutOfPenaltyBox) {
+            maybe = "";
+        }
+
+        System.out.println(name + " is " + maybe + "getting out of the penalty box");
+    }
+
+    public boolean isGettingOutOfPenaltyBox() {
+        return gettingOutOfPenaltyBox;
+    }
+
 }

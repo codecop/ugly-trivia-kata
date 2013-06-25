@@ -16,7 +16,6 @@ public class Game {
     private LinkedList<String> rockQuestions = new LinkedList<String>();
 
     private int currentPlayer;
-    private boolean isGettingOutOfPenaltyBox; // TODO state is global not for each player? player can never come out of penalty box?
 
     public Game() {
         createQuestions();
@@ -55,13 +54,10 @@ public class Game {
 
     private void handleCurrentPlayerPenalty(int eyesOfDice) {
         if (isOdd(eyesOfDice)) {
-            isGettingOutOfPenaltyBox = true;
-            System.out.println(getCurrentPlayer() + " is getting out of the penalty box");
-
+            getCurrentPlayer().setGettingOutOfPenaltyBox(true);
             moveAndAskCurrentPlayerFor(eyesOfDice);
         } else {
-            isGettingOutOfPenaltyBox = false;
-            System.out.println(getCurrentPlayer() + " is not getting out of the penalty box");
+            getCurrentPlayer().setGettingOutOfPenaltyBox(false);
         }
     }
 
@@ -113,7 +109,7 @@ public class Game {
     }
 
     private boolean correctAnswerInPenaltyBox() {
-        if (isGettingOutOfPenaltyBox) {
+        if (getCurrentPlayer().isGettingOutOfPenaltyBox()) {
             return playerWinsCoin();
         } else {
             return playerDoesNotWinCoin();
