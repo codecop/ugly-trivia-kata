@@ -3,6 +3,7 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.LinkedList;
 
 public class Game {
+   
     public static final int NUMBER_QUESTIONS = 50;
 
     private final Players players = new Players();
@@ -12,12 +13,11 @@ public class Game {
     private LinkedList<String> sportsQuestions = new LinkedList<String>();
     private LinkedList<String> rockQuestions = new LinkedList<String>();
 
-
     public Game() {
         createQuestions();
     }
 
-    // TODO move questions, categories and everything into place. place knows its category and its questions or the category know its question.
+    // TODO move questions, categories and everything into Place. Place knows its category and its questions or the Category knows its question.
 
     private void createQuestions() {
         for (int i = 0; i < NUMBER_QUESTIONS; i++) {

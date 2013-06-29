@@ -1,6 +1,5 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import com.sun.org.apache.bcel.internal.generic.IFLE;
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -29,6 +28,7 @@ public class PlayersTest {
     @Test
     public void shouldIteratePlayers() {
         players.changeCurrentPlayer();
+        
         assertThat(players.getCurrentPlayer().getName(), Is.is(PLAYER_TWO));
     }
 
@@ -36,6 +36,7 @@ public class PlayersTest {
     public void shouldStartWithFirstPlayerAgain() {
         players.changeCurrentPlayer();
         players.changeCurrentPlayer();
+        
         assertThat(players.getCurrentPlayer().getName(), Is.is(PLAYER_ONE));
     }
 

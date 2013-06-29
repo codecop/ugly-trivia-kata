@@ -16,24 +16,21 @@ public class PlayerTest {
 
     @Test
     public void newPlayerWithTooFewCoinsShouldNotWin() {
-        player.answeredCorrect();
-        player.answeredCorrect();
-        player.answeredCorrect();
-        player.answeredCorrect();
-        player.answeredCorrect();
+        answerCorrect(5);
 
         assertTrue("new player won", player.didPlayerNotWin());
     }
 
+    private void answerCorrect(int times) {
+        for (int i = 0; i < times; i++) {
+            player.answeredCorrect();
+        }
+    }
+
     @Test
     public void newPlayerWith6CoinsShouldNotWin() {
-        player.answeredCorrect();
-        player.answeredCorrect();
-        player.answeredCorrect();
-        player.answeredCorrect();
-        player.answeredCorrect();
-        player.answeredCorrect();
-
+        answerCorrect(6);
+ 
         assertFalse("new player did not won", player.didPlayerNotWin());
     }
 }
