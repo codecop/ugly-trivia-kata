@@ -35,10 +35,6 @@ public class Player {
         System.out.println(name + "'s new location is " + place.getPlace());
     }
 
-    public int getPlace() {
-        return place.getPlace();
-    }
-
     public boolean isInPenaltyBox() {
         return inPenaltyBox;
     }
@@ -66,5 +62,9 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public String currentCategory() {
+        return place.currentCategory();
     }
 }

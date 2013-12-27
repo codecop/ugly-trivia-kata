@@ -76,20 +76,11 @@ public class Game {
     }
 
     private String currentCategory() {
-        int place = getCurrentPlayer().getPlace();
-        return currentCategory(place % 4);
+        return getCurrentPlayer().currentCategory();
     }
 
     private Player getCurrentPlayer() {
         return players.getCurrentPlayer();
-    }
-
-    private String currentCategory(int place) {
-        if (place == 0) return "Pop";
-        if (place == 1) return "Science";
-        if (place == 2) return "Sports";
-        if (place == 3) return "Rock";
-        return "Rock"; // TODO throw new IllegalStateException("Current player is out of places");
     }
 
     public boolean correctAnswer() {
