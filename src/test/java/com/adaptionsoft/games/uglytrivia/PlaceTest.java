@@ -51,17 +51,17 @@ public class PlaceTest {
     private Object[] placesWithCategories() {
         return $($(0, Category.POP),
                 $(1, Category.SCIENCE),
-                $(2, "Sports"),
+                $(2, Category.SPORTS),
                 $(3, "Rock"),
                 // it should wrap at 4
                 $(4, Category.POP),
                 $(5, Category.SCIENCE),
-                $(6, "Sports"),
+                $(6, Category.SPORTS),
                 $(7, "Rock"),
                 // it has a total of 12
                 $(8, Category.POP),
                 $(9, Category.SCIENCE),
-                $(10, "Sports"),
+                $(10, Category.SPORTS),
                 $(11, "Rock"));
     }
 }

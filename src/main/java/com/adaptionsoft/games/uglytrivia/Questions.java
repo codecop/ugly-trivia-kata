@@ -28,7 +28,7 @@ public class Questions {
             return popQuestions.removeFirst();
         if (currentCategory.equals(Category.SCIENCE))
             return scienceQuestions.removeFirst();
-        if (currentCategory.equals("Sports"))
+        if (currentCategory.equals(Category.SPORTS))
             return sportsQuestions.removeFirst();
         if (currentCategory.equals("Rock"))
             return rockQuestions.removeFirst();
