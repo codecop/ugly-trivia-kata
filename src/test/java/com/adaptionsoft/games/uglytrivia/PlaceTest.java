@@ -50,17 +50,17 @@ public class PlaceTest {
     @SuppressWarnings("unused")
     private Object[] placesWithCategories() {
         return $($(0, Category.POP),
-                $(1, "Science"),
+                $(1, Category.SCIENCE),
                 $(2, "Sports"),
                 $(3, "Rock"),
                 // it should wrap at 4
                 $(4, Category.POP),
-                $(5, "Science"),
+                $(5, Category.SCIENCE),
                 $(6, "Sports"),
                 $(7, "Rock"),
                 // it has a total of 12
                 $(8, Category.POP),
-                $(9, "Science"),
+                $(9, Category.SCIENCE),
                 $(10, "Sports"),
                 $(11, "Rock"));
     }

@@ -28,7 +28,7 @@ public class QuestionsTest {
     @SuppressWarnings("unused")
     private Object[] categoriesAndQuestions() {
         return $($(Category.POP, "Pop Question 0"),
-                $("Science", "Science Question 0"),
+                $(Category.SCIENCE, "Science Question 0"),
                 $("Sports", "Sports Question 0"),
                 $("Rock", "Rock Question 0"));
     }
@@ -44,7 +44,7 @@ public class QuestionsTest {
     @SuppressWarnings("unused")
     private Object[] categoriesAndSecondQuestions() {
         return $($(Category.POP, "Pop Question 1"),
-                $("Science", "Science Question 1"),
+                $(Category.SCIENCE, "Science Question 1"),
                 $("Sports", "Sports Question 1"),
                 $("Rock", "Rock Question 1"));
     }

@@ -26,7 +26,7 @@ public class Questions {
     public String nextFor(Object currentCategory) {
         if (currentCategory.equals(Category.POP))                               // TODO categories? enum?
             return popQuestions.removeFirst();
-        if (currentCategory.equals("Science"))
+        if (currentCategory.equals(Category.SCIENCE))
             return scienceQuestions.removeFirst();
         if (currentCategory.equals("Sports"))
             return sportsQuestions.removeFirst();
