@@ -21,13 +21,13 @@ public class QuestionsTest {
 
     @Test
     @Parameters(method = "categoriesAndQuestions")
-    public void shouldAskQuestion(String category, String question) {
+    public void shouldAskQuestion(Object category, String question) {
         assertThat(questions.nextFor(category), is(question));
     }
 
     @SuppressWarnings("unused")
     private Object[] categoriesAndQuestions() {
-        return $($("Pop", "Pop Question 0"),
+        return $($(Category.POP, "Pop Question 0"),
                 $("Science", "Science Question 0"),
                 $("Sports", "Sports Question 0"),
                 $("Rock", "Rock Question 0"));
@@ -35,7 +35,7 @@ public class QuestionsTest {
 
     @Test
     @Parameters(method = "categoriesAndSecondQuestions")
-    public void shouldAskDifferentQuestionOnSecondCall(String category, String question) {
+    public void shouldAskDifferentQuestionOnSecondCall(Object category, String question) {
         questions.nextFor(category);
 
         assertThat(questions.nextFor(category), is(question));
@@ -43,7 +43,7 @@ public class QuestionsTest {
 
     @SuppressWarnings("unused")
     private Object[] categoriesAndSecondQuestions() {
-        return $($("Pop", "Pop Question 1"),
+        return $($(Category.POP, "Pop Question 1"),
                 $("Science", "Science Question 1"),
                 $("Sports", "Sports Question 1"),
                 $("Rock", "Rock Question 1"));

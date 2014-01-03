@@ -64,7 +64,7 @@ public class Player {
         return name;
     }
 
-    public String currentCategory() {
+    public Object currentCategory() {
         return place.currentCategory();
     }
 }

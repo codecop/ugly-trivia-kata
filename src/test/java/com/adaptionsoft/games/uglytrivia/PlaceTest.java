@@ -41,7 +41,7 @@ public class PlaceTest {
 
     @Test
     @Parameters(method = "placesWithCategories")
-    public void shouldKnowItsCategories(int advance, String category) {
+    public void shouldKnowItsCategories(int advance, Object category) {
         place.advanceCurrentPlayerBy(advance);
 
         assertThat(place.currentCategory(), is(category));
@@ -49,17 +49,17 @@ public class PlaceTest {
 
     @SuppressWarnings("unused")
     private Object[] placesWithCategories() {
-        return $($(0, "Pop"),
+        return $($(0, Category.POP),
                 $(1, "Science"),
                 $(2, "Sports"),
                 $(3, "Rock"),
                 // it should wrap at 4
-                $(4, "Pop"),
+                $(4, Category.POP),
                 $(5, "Science"),
                 $(6, "Sports"),
                 $(7, "Rock"),
                 // it has a total of 12
-                $(8, "Pop"),
+                $(8, Category.POP),
                 $(9, "Science"),
                 $(10, "Sports"),
                 $(11, "Rock"));

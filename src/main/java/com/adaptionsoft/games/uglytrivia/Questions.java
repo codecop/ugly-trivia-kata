@@ -23,8 +23,8 @@ public class Questions {
         }
     }
 
-    public String nextFor(String currentCategory) {
-        if (currentCategory.equals("Pop"))                               // TODO categories? enum?
+    public String nextFor(Object currentCategory) {
+        if (currentCategory.equals(Category.POP))                               // TODO categories? enum?
             return popQuestions.removeFirst();
         if (currentCategory.equals("Science"))
             return scienceQuestions.removeFirst();
@@ -33,6 +33,6 @@ public class Questions {
         if (currentCategory.equals("Rock"))
             return rockQuestions.removeFirst();
 
-        throw new IllegalArgumentException(currentCategory);
+        throw new IllegalArgumentException(currentCategory.toString());
     }
 }
