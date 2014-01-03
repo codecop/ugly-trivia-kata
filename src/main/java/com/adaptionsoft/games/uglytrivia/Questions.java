@@ -10,21 +10,25 @@ public class Questions {
     private final Map<Category, LinkedList<String>> questionsByCategory = new HashMap<Category, LinkedList<String>>();
 
     public Questions() {
-        createQuestions();
+        create();
     }
 
-    private void createQuestions() {
-        questionsByCategory.put(Category.POP, new LinkedList<String>());
-        questionsByCategory.put(Category.SCIENCE, new LinkedList<String>());
-        questionsByCategory.put(Category.SPORTS, new LinkedList<String>());
-        questionsByCategory.put(Category.ROCK, new LinkedList<String>());
-
-        for (int i = 0; i < NUMBER_QUESTIONS; i++) {
-            questionsByCategory.get(Category.POP).addLast(Category.POP.displayName() + " Question " + i);
-            questionsByCategory.get(Category.SCIENCE).addLast(Category.SCIENCE.displayName() + " Question " + i);
-            questionsByCategory.get(Category.SPORTS).addLast(Category.SPORTS.displayName() + " Question " + i);
-            questionsByCategory.get(Category.ROCK).addLast(Category.ROCK.displayName() + " Question " + i);
+    private void create() {
+        for (Category category : Category.values()) {
+            putFor(category);
         }
+    }
+
+    private void putFor(Category category) {
+        questionsByCategory.put(category, createFor(category));
+    }
+
+    private LinkedList<String> createFor(Category category) {
+        LinkedList<String> questions = new LinkedList<String>();
+        for (int i = 0; i < NUMBER_QUESTIONS; i++) {
+            questions.addLast(category.displayName() + " Question " + i);
+        }
+        return questions;
     }
 
     public String nextFor(Category currentCategory) {
