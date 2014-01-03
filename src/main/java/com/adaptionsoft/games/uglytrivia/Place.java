@@ -18,10 +18,6 @@ public class Place {
     }
 
     public Category currentCategory() {
-        if (place % 4 == 0) return Category.POP;
-        if (place % 4 == 1) return Category.SCIENCE;
-        if (place % 4 == 2) return Category.SPORTS;
-        if (place % 4 == 3) return Category.ROCK;
-        return Category.ROCK; // TODO throw new IllegalStateException("Current player is out of places");
+        return Category.ORDERED[place % 4];
     }
 }
