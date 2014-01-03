@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import static junitparams.JUnitParamsRunner.$;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 @RunWith(JUnitParamsRunner.class)
 public class QuestionsTest {
@@ -26,13 +25,6 @@ public class QuestionsTest {
         assertThat(questions.nextFor(category), is(question));
     }
 
-    @Test
-    public void shouldAskDifferentPopQuestionOnSecondCall() {
-        questions.nextFor("Pop");
-
-        assertThat(questions.nextFor("Pop"), is("Pop Question 1"));
-    }
-
     @SuppressWarnings("unused")
     private Object[] categoriesAndQuestions() {
         return $($("Pop", "Pop Question 0"),
@@ -42,7 +34,19 @@ public class QuestionsTest {
     }
 
     @Test
-    public void shouldAskDifferentQuestionOnSecondCall() {
-        fail("add test that the 4 categories do not ask same question twice");
+    @Parameters(method = "categoriesAndSecondQuestions")
+    public void shouldAskDifferentQuestionOnSecondCall(String category, String question) {
+        questions.nextFor(category);
+
+        assertThat(questions.nextFor(category), is(question));
     }
+
+    @SuppressWarnings("unused")
+    private Object[] categoriesAndSecondQuestions() {
+        return $($("Pop", "Pop Question 1"),
+                $("Science", "Science Question 1"),
+                $("Sports", "Sports Question 1"),
+                $("Rock", "Rock Question 1"));
+    }
+
 }
