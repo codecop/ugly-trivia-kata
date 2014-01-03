@@ -20,10 +20,10 @@ public class Questions {
         questionsByCategory.put(Category.ROCK, new LinkedList<String>());
 
         for (int i = 0; i < NUMBER_QUESTIONS; i++) {
-            questionsByCategory.get(Category.POP).addLast("Pop Question " + i);
-            questionsByCategory.get(Category.SCIENCE).addLast("Science Question " + i);
-            questionsByCategory.get(Category.SPORTS).addLast("Sports Question " + i);
-            questionsByCategory.get(Category.ROCK).addLast("Rock Question " + i);
+            questionsByCategory.get(Category.POP).addLast(Category.POP.displayName() + " Question " + i);
+            questionsByCategory.get(Category.SCIENCE).addLast(Category.SCIENCE.displayName() + " Question " + i);
+            questionsByCategory.get(Category.SPORTS).addLast(Category.SPORTS.displayName() + " Question " + i);
+            questionsByCategory.get(Category.ROCK).addLast(Category.ROCK.displayName() + " Question " + i);
         }
     }
 
