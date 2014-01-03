@@ -41,7 +41,7 @@ public class PlaceTest {
 
     @Test
     @Parameters(method = "placesWithCategories")
-    public void shouldKnowItsCategories(int advance, Object category) {
+    public void shouldKnowItsCategories(int advance, Category category) {
         place.advanceCurrentPlayerBy(advance);
 
         assertThat(place.currentCategory(), is(category));
@@ -52,16 +52,16 @@ public class PlaceTest {
         return $($(0, Category.POP),
                 $(1, Category.SCIENCE),
                 $(2, Category.SPORTS),
-                $(3, "Rock"),
+                $(3, Category.ROCK),
                 // it should wrap at 4
                 $(4, Category.POP),
                 $(5, Category.SCIENCE),
                 $(6, Category.SPORTS),
-                $(7, "Rock"),
+                $(7, Category.ROCK),
                 // it has a total of 12
                 $(8, Category.POP),
                 $(9, Category.SCIENCE),
                 $(10, Category.SPORTS),
-                $(11, "Rock"));
+                $(11, Category.ROCK));
     }
 }

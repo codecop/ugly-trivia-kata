@@ -23,16 +23,21 @@ public class Questions {
         }
     }
 
-    public String nextFor(Object currentCategory) {
-        if (currentCategory.equals(Category.POP))                               // TODO categories? enum?
-            return popQuestions.removeFirst();
-        if (currentCategory.equals(Category.SCIENCE))
-            return scienceQuestions.removeFirst();
-        if (currentCategory.equals(Category.SPORTS))
-            return sportsQuestions.removeFirst();
-        if (currentCategory.equals("Rock"))
-            return rockQuestions.removeFirst();
-
-        throw new IllegalArgumentException(currentCategory.toString());
+    public String nextFor(Category currentCategory) {
+        if (currentCategory == null) {
+            throw new IllegalArgumentException("no category");
+        }
+        switch (currentCategory) {
+            case POP:
+                return popQuestions.removeFirst();
+            case SCIENCE:
+                return scienceQuestions.removeFirst();
+            case SPORTS:
+                return sportsQuestions.removeFirst();
+            case ROCK:
+                return rockQuestions.removeFirst();
+            default:
+                throw new IllegalArgumentException("unknown category " + currentCategory);
+        }
     }
 }

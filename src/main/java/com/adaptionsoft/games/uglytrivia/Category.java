@@ -4,6 +4,7 @@ public enum Category {
 
     POP,
     SCIENCE,
-    SPORTS
+    SPORTS,
+    ROCK
 
 }

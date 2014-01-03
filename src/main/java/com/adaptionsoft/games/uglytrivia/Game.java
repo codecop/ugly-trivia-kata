@@ -40,7 +40,7 @@ public class Game {
     }
 
     private void askQuestion() {
-        Object currentCategory = getCurrentPlayer().currentCategory();
+        Category currentCategory = getCurrentPlayer().currentCategory();
         System.out.println("The category is " + currentCategory);
         System.out.println(questions.nextFor(currentCategory));
     }
