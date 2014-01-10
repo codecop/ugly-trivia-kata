@@ -32,4 +32,7 @@ public class Players {
         }
     }
 
+    public void currentPlayerGoToPenaltyBox() {
+        getCurrentPlayer().goToPenaltyBox();
+    }
 }

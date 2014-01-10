@@ -81,7 +81,7 @@ public class Game {
 
     public boolean wrongAnswer() {
         System.out.println("Question was incorrectly answered");
-        getCurrentPlayer().goToPenaltyBox();
+        players.currentPlayerGoToPenaltyBox();
 
         return playerDoesNotWinCoin();
     }

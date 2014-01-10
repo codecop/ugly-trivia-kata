@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class GameTest {
+
     @Test
     public void wrongAnswerShouldSendPlayerToPenaltyBox() {
         Player lonelyTom = new Player("Lonely Tom");
@@ -26,11 +27,15 @@ public class GameTest {
         verify(player, never()).answeredCorrect();
     }
 
+    private Game createGameWithSinglePlayer(Player player) {
+        Players players = new Players();
+        players.add(player);
+        return new Game(players, null);
+    }
+
     @Test
     public void wrongAnswerShouldEndTurn(){
         Players players = mock(Players.class);
-        when(players.getCurrentPlayer()).thenReturn(new Player("unimportant"));
-
         Game game = new Game(players, null);
 
         game.wrongAnswer();
@@ -38,23 +43,9 @@ public class GameTest {
         verify(players).changeCurrentPlayer();
     }
 
-    private Game createGameWithSinglePlayer(Player player) {
-        Players players = new Players();
-        players.add(player);
-        return new Game(players, null);
-    }
-
-
-           /*
-
-        turn is over
+        /*
 
         test output
 
-         */
-
-
-
-
-
+        */
 }
