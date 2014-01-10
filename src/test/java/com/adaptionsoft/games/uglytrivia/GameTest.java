@@ -2,10 +2,17 @@ package com.adaptionsoft.games.uglytrivia;
 
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class GameTest {
+
+    private PrintStream sysOut;
 
     @Test
     public void wrongAnswerShouldSendPlayerToPenaltyBox() {
@@ -18,7 +25,7 @@ public class GameTest {
     }
 
     @Test
-    public void wrongAnswerShouldNotGetACoin(){
+    public void wrongAnswerShouldNotGetACoin() {
         Player player = mock(Player.class);
         Game game = createGameWithSinglePlayer(player);
 
@@ -34,7 +41,7 @@ public class GameTest {
     }
 
     @Test
-    public void wrongAnswerShouldEndTurn(){
+    public void wrongAnswerShouldEndTurn() {
         Players players = mock(Players.class);
         Game game = new Game(players, null);
 
@@ -43,9 +50,31 @@ public class GameTest {
         verify(players).changeCurrentPlayer();
     }
 
-        /*
+    @Test
+    public void wrongAnswerShouldPrintAWrongAnswerMessage() {
+        try {
+            ByteArrayOutputStream systemOut = captureSystemOut();
 
-        test output
+            Players players = mock(Players.class);
+            Game game = new Game(players, null);
 
-        */
+            game.wrongAnswer();
+
+            assertThat(new String(systemOut.toByteArray()), is("Question was incorrectly answered\n"));
+        } finally {
+            resetSystemOut();
+        }
+    }
+
+    private ByteArrayOutputStream captureSystemOut() {
+        sysOut = System.out;
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        return out;
+    }
+
+    private void resetSystemOut() {
+        System.setOut(sysOut);
+    }
 }
