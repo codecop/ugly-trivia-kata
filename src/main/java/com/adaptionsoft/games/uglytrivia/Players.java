@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Players {
 
-    private static final int MAXIMUM_NUMBER_PLAYERS = 6;
+    // todo private static final int MAXIMUM_NUMBER_PLAYERS = 6;
     
     private List<Player> players = new ArrayList<Player>();
     private int currentPlayer;
