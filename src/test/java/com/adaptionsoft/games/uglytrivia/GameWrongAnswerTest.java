@@ -6,11 +6,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
-public class GameTest {
+public class GameWrongAnswerTest {
 
     private PrintStream sysOut;
 
@@ -76,5 +77,13 @@ public class GameTest {
 
     private void resetSystemOut() {
         System.setOut(sysOut);
+    }
+
+    @Test
+    public void wrongAnswerShouldNeverWinGame() {
+        Players players = mock(Players.class);
+        Game game = new Game(players, null);
+
+        assertFalse("Wrong answer should never win game", !game.wrongAnswer());
     }
 }
