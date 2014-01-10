@@ -18,7 +18,17 @@ public class PlayersTest {
     @Before
     public void addPlayers() {
         players.add(PLAYER_ONE);
-        players.add(PLAYER_TWO);         }
+        players.add(PLAYER_TWO);
+    }
+
+    @Test
+    public void shouldAddOnePlayer(){
+        players.add(new Player(ANY_PLAYER));
+        players.changeCurrentPlayer();
+        players.changeCurrentPlayer();
+
+        assertThat(players.getCurrentPlayer().getName(), Is.is(ANY_PLAYER));
+    }
 
     @Test
     public void shouldGiveFirstPlayer() {

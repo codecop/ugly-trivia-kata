@@ -11,10 +11,13 @@ public class Players {
     private int currentPlayer;
 
     public void add(String playerName) {
-        // TODO no check for MAXIMUM_NUMBER_PLAYERS, maybe add?
+        add(new Player(playerName));
+    }
 
-        players.add(new Player(playerName));
-        System.out.println(playerName + " was added");
+    public void add(Player player) {
+        // TODO no check for MAXIMUM_NUMBER_PLAYERS, maybe add?
+        players.add(player);
+        System.out.println(player.getName() + " was added");
         System.out.println("They are player number " + players.size());
     }
 
