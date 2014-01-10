@@ -1,12 +1,14 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class Game {
 
     private final Questions questions = new Questions();
-    private final Players players = new Players();
+    private final Players players;
 
-    public void add(String playerName) {
-        players.add(playerName);
+    public Game(Players players) {
+        this.players = players;
     }
 
     public void playCurrentPlayer(int eyesOfDice) {
@@ -18,7 +20,6 @@ public class Game {
         } else {
             moveAndAskCurrentPlayerFor(eyesOfDice);
         }
-
     }
 
     private void handleCurrentPlayerPenalty(int eyesOfDice) {
