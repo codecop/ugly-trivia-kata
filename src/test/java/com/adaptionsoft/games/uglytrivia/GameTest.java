@@ -3,9 +3,7 @@ package com.adaptionsoft.games.uglytrivia;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class GameTest {
     @Test
@@ -26,6 +24,18 @@ public class GameTest {
         game.wrongAnswer();
 
         verify(player, never()).answeredCorrect();
+    }
+
+    @Test
+    public void wrongAnswerShouldEndTurn(){
+        Players players = mock(Players.class);
+        when(players.getCurrentPlayer()).thenReturn(new Player("unimportant"));
+
+        Game game = new Game(players, null);
+
+        game.wrongAnswer();
+
+        verify(players).changeCurrentPlayer();
     }
 
     private Game createGameWithSinglePlayer(Player player) {
