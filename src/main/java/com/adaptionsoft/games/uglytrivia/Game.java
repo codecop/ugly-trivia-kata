@@ -1,14 +1,13 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class Game {
 
-    private final Questions questions = new Questions();
+    private final Questions questions;
     private final Players players;
 
-    public Game(Players players) {
+    public Game(Players players, Questions questions) {
         this.players = players;
+        this.questions = questions;
     }
 
     public void playCurrentPlayer(int eyesOfDice) {
