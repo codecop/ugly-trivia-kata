@@ -1,12 +1,12 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class Player {
-   
+
     private static final int NEEDED_COINS_TO_WIN = 6;
 
     private final String name;
     private final Place place = new Place();
-    
+
     private boolean inPenaltyBox;
     private static boolean gettingOutOfPenaltyBox; // TODO state is global not for each player? player can never come out of penalty box?
     private int purse;
@@ -44,7 +44,10 @@ public class Player {
         inPenaltyBox = true;
     }
 
-    // TODO add logic to reset penalty box - bug?
+    public void exitPenaltyBox() {
+        // TODO add logic to reset penalty box - bug?
+        throw new UnsupportedOperationException("not implemented, known defect, never called");
+    }
 
     public void setGettingOutOfPenaltyBox(boolean gettingOut) {
         gettingOutOfPenaltyBox = gettingOut;

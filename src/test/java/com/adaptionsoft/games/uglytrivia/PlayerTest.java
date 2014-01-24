@@ -1,8 +1,11 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
@@ -32,5 +35,16 @@ public class PlayerTest {
         answerCorrect(6);
  
         assertFalse("new player did not won", player.didPlayerNotWin());
+    }
+
+    @Test
+    @Ignore("known defect, not implemented")
+    public void shouldNotBeInPenaltyBoxAfterExit(){
+        player.goToPenaltyBox();
+        assertThat(player.isInPenaltyBox(), is(true));
+
+        player.exitPenaltyBox();
+
+        assertThat(player.isInPenaltyBox(), is(false));
     }
 }

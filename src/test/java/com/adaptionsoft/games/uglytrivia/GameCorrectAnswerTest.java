@@ -38,15 +38,29 @@ public class GameCorrectAnswerTest {
 
     @Test
     @Ignore("known defect in code")
-    public void correctAnswerShouldGetPlayerOutOfPenaltyBoxIfLucky() {
+    public void correctAnswerShouldGetLuckyPlayerOutOfPenaltyBox() {
         Player playerInPenaltyBox = mock(Player.class);
         when(playerInPenaltyBox.isInPenaltyBox()).thenReturn(true);
-        when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(true);
+        boolean lucky = true;
+        when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(lucky);
         Game game = createGameWithSinglePlayer(playerInPenaltyBox);
 
         game.correctAnswer();
 
-        // verify(playerInPenaltyBox).exitPenaltyBox();
+        verify(playerInPenaltyBox).exitPenaltyBox();
+    }
+
+    @Test
+    public void correctAnswerShouldNotGetUnluckyPlayerOutOfPenaltyBox() {
+        Player playerInPenaltyBox = mock(Player.class);
+        when(playerInPenaltyBox.isInPenaltyBox()).thenReturn(true);
+        boolean unlucky = true;
+        when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(unlucky);
+        Game game = createGameWithSinglePlayer(playerInPenaltyBox);
+
+        game.correctAnswer();
+
+        verify(playerInPenaltyBox, never()).exitPenaltyBox();
     }
 
     // right answer with enough previous couns should end game
