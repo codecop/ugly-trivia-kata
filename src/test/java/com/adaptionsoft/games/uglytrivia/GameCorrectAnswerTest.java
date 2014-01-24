@@ -22,4 +22,14 @@ public class GameCorrectAnswerTest {
         players.add(player);
         return new Game(players, null);
     }
+
+    @Test
+    public void correctAnswerShouldEndTurn() {
+        Players players = mock(Players.class);
+        Game game = new Game(players, null);
+
+        game.correctAnswer();
+
+        verify(players).changeCurrentPlayer();
+    }
 }

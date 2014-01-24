@@ -6,7 +6,7 @@ import java.util.List;
 public class Players {
 
     // todo private static final int MAXIMUM_NUMBER_PLAYERS = 6;
-    
+
     private List<Player> players = new ArrayList<Player>();
     private int currentPlayer;
 
@@ -34,5 +34,17 @@ public class Players {
 
     public void currentPlayerGoToPenaltyBox() {
         getCurrentPlayer().goToPenaltyBox();
+    }
+
+    public boolean isCurrentPlayerInPenaltyBox() {
+        return getCurrentPlayer().isInPenaltyBox();
+    }
+
+    public void currentPlayerAnsweredCorrect() {
+        getCurrentPlayer().answeredCorrect();
+    }
+
+    public boolean didCurrentPlayerNotWin() {
+        return getCurrentPlayer().didPlayerNotWin();
     }
 }
