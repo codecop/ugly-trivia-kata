@@ -1,11 +1,8 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import org.hamcrest.core.Is;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class GameCorrectAnswerTest {
@@ -54,7 +51,7 @@ public class GameCorrectAnswerTest {
     public void correctAnswerShouldNotGetUnluckyPlayerOutOfPenaltyBox() {
         Player playerInPenaltyBox = mock(Player.class);
         when(playerInPenaltyBox.isInPenaltyBox()).thenReturn(true);
-        boolean unlucky = true;
+        boolean unlucky = false;
         when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(unlucky);
         Game game = createGameWithSinglePlayer(playerInPenaltyBox);
 
@@ -63,5 +60,8 @@ public class GameCorrectAnswerTest {
         verify(playerInPenaltyBox, never()).exitPenaltyBox();
     }
 
-    // right answer with enough previous couns should end game
+    // TODO add test for right answer with enough previous coins ends game
+    // TODO add test for output if any
+    // TODO refactor duplicated createGameWithSinglePlayer in both test classes
+    // TODO verify this are all test cases for correct answer
 }

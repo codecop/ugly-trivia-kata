@@ -46,7 +46,7 @@ public class Game {
     }
 
     private Player getCurrentPlayer() {
-        // todo if this goes away, rename] players to currentPlayer, remove xCurrentPlayer in all method names
+        // TODO if this goes away, rename players to currentPlayer, remove xCurrentPlayer in all method names
         return players.getCurrentPlayer();
     }
 
@@ -90,6 +90,4 @@ public class Game {
     // TODO what is that boolean return value?
     // TODO restructure methods to be either high or low level so we can see the algorithm
     // TODO factor out/separate the output, have it in one place only
-    // TODO bring Game under test, ideas?
-    // TODO maybe hide the getCurrentPlayer somewhere
 }
