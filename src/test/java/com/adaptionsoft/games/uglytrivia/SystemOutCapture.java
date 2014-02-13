@@ -18,25 +18,16 @@ public abstract class SystemOutCapture {
         return out;
     }
 
-    public void doCapture() {
-        try {
-            whileCaptured();
-        } finally {
-            resetSystemOut();
-        }
-    }
-
-    public abstract void whileCaptured();
-
-    public String capturedSystemOut() {
+    protected String capturedSystemOut() {
         return new String(capturedSystemOut.toByteArray());
     }
-    
-    public String cr() {
+
+    protected String cr() {
         return System.getProperty("line.separator");
     }
 
-    private void resetSystemOut() {
+    public void resetSystemOut() {
         System.setOut(originalSystemOut);
     }
+
 }

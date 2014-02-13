@@ -40,15 +40,14 @@ public class PlayerTest {
     @Test
     public void shouldPrintACorrectAnswerMessageWhenScoring() {
         new SystemOutCapture() {
-            @Override
-            public void whileCaptured() {
-                
+            {
+
                 player.answeredCorrect();
 
                 Assert.assertThat(capturedSystemOut(), is("Erik now has 1 Gold Coins." + cr()));
-                
+
             }
-        }.doCapture();
+        }.resetSystemOut();
     }
 
     @Test

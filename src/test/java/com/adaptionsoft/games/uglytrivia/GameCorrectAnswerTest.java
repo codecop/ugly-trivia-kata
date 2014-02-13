@@ -88,8 +88,7 @@ public class GameCorrectAnswerTest {
     @Test
     public void correctAnswerShouldPrintAWinMessage() {
         new SystemOutCapture() {
-            @Override
-            public void whileCaptured() {
+            {
 
                 Players players = mock(Players.class);
                 Game game = new Game(players, null);
@@ -97,9 +96,9 @@ public class GameCorrectAnswerTest {
                 game.correctAnswer();
 
                 Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!" + cr()));
-                
+
             }
-        }.doCapture();
+        }.resetSystemOut();
     }
 
 }
