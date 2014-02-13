@@ -55,7 +55,7 @@ public class GameWrongAnswerTest {
 
                 game.wrongAnswer();
 
-                assertThat(capturedSystemOut(), is("Question was incorrectly answered\n"));
+                assertThat(capturedSystemOut(), is("Question was incorrectly answered" + cr()));
 
             }
         }.doCapture();

@@ -96,7 +96,7 @@ public class GameCorrectAnswerTest {
 
                 game.correctAnswer();
 
-                Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!\n"));
+                Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!" + cr()));
                 
             }
         }.doCapture();

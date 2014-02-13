@@ -31,6 +31,10 @@ public abstract class SystemOutCapture {
     public String capturedSystemOut() {
         return new String(capturedSystemOut.toByteArray());
     }
+    
+    public String cr() {
+        return System.getProperty("line.separator");
+    }
 
     private void resetSystemOut() {
         System.setOut(originalSystemOut);
