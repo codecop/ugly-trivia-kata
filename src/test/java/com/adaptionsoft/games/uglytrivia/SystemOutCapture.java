@@ -3,34 +3,36 @@ package com.adaptionsoft.games.uglytrivia;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class SystemOutCapture {
+public abstract class SystemOutCapture {
+    private final PrintStream originalSystemOut;
+    private final ByteArrayOutputStream capturedSystemOut;
 
-    private PrintStream sysOut;
-
-    public interface CodeBlock {
-        void whileCaptured(ByteArrayOutputStream systemOut);
-    }
-
-    public static void execute(CodeBlock body) {
-        SystemOutCapture c = new SystemOutCapture();
-        try {
-            ByteArrayOutputStream systemOut = c.captureSystemOut();
-
-            body.whileCaptured(systemOut);
-        } finally {
-            c.resetSystemOut();
-        }
+    public SystemOutCapture() {
+        originalSystemOut = System.out;
+        capturedSystemOut = captureSystemOut();
     }
 
     private ByteArrayOutputStream captureSystemOut() {
-        sysOut = System.out;
-
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         return out;
     }
 
+    public void doCapture() {
+        try {
+            whileCaptured();
+        } finally {
+            resetSystemOut();
+        }
+    }
+
+    public abstract void whileCaptured();
+
+    public String capturedSystemOut() {
+        return new String(capturedSystemOut.toByteArray());
+    }
+
     private void resetSystemOut() {
-        System.setOut(sysOut);
+        System.setOut(originalSystemOut);
     }
 }

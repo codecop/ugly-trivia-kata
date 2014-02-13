@@ -2,8 +2,6 @@ package com.adaptionsoft.games.uglytrivia;
 
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -48,18 +46,17 @@ public class GameWrongAnswerTest {
 
     @Test
     public void wrongAnswerShouldPrintAWrongAnswerMessage() {
-        SystemOutCapture.execute(new SystemOutCapture.CodeBlock() {
-            public void whileCaptured(ByteArrayOutputStream systemOut) {
+        new SystemOutCapture() {
+            public void whileCaptured() {
 
                 Players players = mock(Players.class);
                 Game game = new Game(players, null);
 
                 game.wrongAnswer();
 
-                assertThat(new String(systemOut.toByteArray()), is("Question was incorrectly answered\n"));
-
+                assertThat(capturedSystemOut(), is("Question was incorrectly answered\n"));
             }
-        });
+        }.doCapture();
     }
 
     @Test
