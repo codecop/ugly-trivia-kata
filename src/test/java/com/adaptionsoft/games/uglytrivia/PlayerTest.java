@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -33,13 +34,24 @@ public class PlayerTest {
     @Test
     public void newPlayerWith6CoinsShouldWin() {
         answerCorrect(6);
- 
+
         assertFalse("new player did not won", player.didPlayerNotWin());
     }
 
     @Test
+    public void shouldPrintACorrectAnswerMessageWhenScoring() {
+        new SystemOutCapture() {
+            public void whileCaptured() {
+                player.answeredCorrect();
+
+                Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!\nErik now has 1 Gold Coins.\n"));
+            }
+        }.doCapture();
+    }
+
+    @Test
     @Ignore("known defect, not implemented")
-    public void shouldNotBeInPenaltyBoxAfterExit(){
+    public void shouldNotBeInPenaltyBoxAfterExit() {
         player.goToPenaltyBox();
         assertThat(player.isInPenaltyBox(), is(true));
 

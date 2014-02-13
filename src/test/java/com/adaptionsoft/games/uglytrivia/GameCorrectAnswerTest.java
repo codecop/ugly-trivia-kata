@@ -83,7 +83,5 @@ public class GameCorrectAnswerTest {
         assertThat(game.correctAnswer(), is(false));
     }
 
-    // TODO add test for output if any
     // TODO refactor duplicated createGameWithSinglePlayer in both test classes
-    // TODO verify this are all test cases for correct answer
 }
