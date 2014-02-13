@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class Questions {
-    public static final int NUMBER_QUESTIONS = 50;
+    private static final int NUMBER_QUESTIONS = 50;
 
     private final Map<Category, LinkedList<String>> questionsByCategory = new HashMap<Category, LinkedList<String>>();
 

@@ -21,6 +21,7 @@ public class GameCorrectAnswerTest {
     }
 
     private Game createGameWithSinglePlayer(Player player) {
+        // TODO refactor duplicated createGameWithSinglePlayer out of both test classes
         Players players = new Players();
         players.add(player);
         return new Game(players, null);
@@ -87,6 +88,7 @@ public class GameCorrectAnswerTest {
     @Test
     public void correctAnswerShouldPrintAWinMessage() {
         new SystemOutCapture() {
+            @Override
             public void whileCaptured() {
 
                 Players players = mock(Players.class);
@@ -95,10 +97,9 @@ public class GameCorrectAnswerTest {
                 game.correctAnswer();
 
                 Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!\n"));
+                
             }
         }.doCapture();
     }
 
-
-    // TODO refactor duplicated createGameWithSinglePlayer in both test classes
 }

@@ -8,7 +8,7 @@ public class Player {
     private final Place place = new Place();
 
     private boolean inPenaltyBox;
-    private static boolean gettingOutOfPenaltyBox; // TODO state is global not for each player? player can never come out of penalty box?
+    private static boolean gettingOutOfPenaltyBox; // TODO bug: State is global not for each player. Player can never come out of penalty box.
     private int purse;
 
     public Player(String name) {
@@ -44,7 +44,7 @@ public class Player {
     }
 
     public void exitPenaltyBox() {
-        // TODO add logic to reset penalty box - bug?
+        // TODO bug: Logic to reset penalty box is never called.
         throw new UnsupportedOperationException("not implemented, known defect, never called");
     }
 

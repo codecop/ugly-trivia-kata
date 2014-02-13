@@ -7,7 +7,7 @@ public enum Category {
     SPORTS("Sports"),
     ROCK("Rock");
 
-    public static final Category[] ORDERED = {POP, SCIENCE, SPORTS, ROCK};
+    public static final Category[] ORDERED = { POP, SCIENCE, SPORTS, ROCK };
 
     private final String displayName;
 

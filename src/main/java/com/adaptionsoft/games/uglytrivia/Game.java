@@ -56,6 +56,7 @@ public class Game {
         } else {
             return playerWinsCoin();
         }
+        // TODO what is that boolean return value?
     }
 
     private boolean correctAnswerInPenaltyBox() {
@@ -88,7 +89,6 @@ public class Game {
         return playerDoesNotWinCoin();
     }
 
-    // TODO what is that boolean return value?
     // TODO restructure methods to be either high or low level so we can see the algorithm
     // TODO factor out/separate the output, have it in one place only
 }

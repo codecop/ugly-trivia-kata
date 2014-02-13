@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
-
     private Player player = new Player("Erik");
 
     @Test
@@ -41,10 +40,13 @@ public class PlayerTest {
     @Test
     public void shouldPrintACorrectAnswerMessageWhenScoring() {
         new SystemOutCapture() {
+            @Override
             public void whileCaptured() {
+                
                 player.answeredCorrect();
 
                 Assert.assertThat(capturedSystemOut(), is("Erik now has 1 Gold Coins.\n"));
+                
             }
         }.doCapture();
     }

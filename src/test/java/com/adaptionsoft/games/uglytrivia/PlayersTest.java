@@ -1,11 +1,11 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class PlayersTest {
 
@@ -22,32 +22,32 @@ public class PlayersTest {
     }
 
     @Test
-    public void shouldAddOnePlayer(){
+    public void shouldAddOnePlayer() {
         players.add(new Player(ANY_PLAYER));
         players.changeCurrentPlayer();
         players.changeCurrentPlayer();
 
-        assertThat(players.getCurrentPlayer().getName(), Is.is(ANY_PLAYER));
+        assertThat(players.getCurrentPlayer().getName(), is(ANY_PLAYER));
     }
 
     @Test
     public void shouldGiveFirstPlayer() {
-        assertThat(players.getCurrentPlayer().getName(), Is.is(PLAYER_ONE));
+        assertThat(players.getCurrentPlayer().getName(), is(PLAYER_ONE));
     }
 
     @Test
     public void shouldIteratePlayers() {
         players.changeCurrentPlayer();
-        
-        assertThat(players.getCurrentPlayer().getName(), Is.is(PLAYER_TWO));
+
+        assertThat(players.getCurrentPlayer().getName(), is(PLAYER_TWO));
     }
 
     @Test
     public void shouldStartWithFirstPlayerAgain() {
         players.changeCurrentPlayer();
         players.changeCurrentPlayer();
-        
-        assertThat(players.getCurrentPlayer().getName(), Is.is(PLAYER_ONE));
+
+        assertThat(players.getCurrentPlayer().getName(), is(PLAYER_ONE));
     }
 
     @Test(expected = IllegalAccessException.class)

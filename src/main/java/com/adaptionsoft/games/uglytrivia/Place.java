@@ -1,7 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class Place {
-
     private static final int NUMBER_PLACES = 12;
 
     private int place;

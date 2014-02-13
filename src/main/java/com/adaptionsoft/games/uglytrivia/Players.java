@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Players {
-
-    // todo private static final int MAXIMUM_NUMBER_PLAYERS = 6;
+    // private static final int MAXIMUM_NUMBER_PLAYERS = 6;
 
     private List<Player> players = new ArrayList<Player>();
     private int currentPlayer;
@@ -15,7 +14,7 @@ public class Players {
     }
 
     public void add(Player player) {
-        // TODO no check for MAXIMUM_NUMBER_PLAYERS, maybe add?
+        // TODO missing check: No check for MAXIMUM_NUMBER_PLAYERS
         players.add(player);
         System.out.println(player.getName() + " was added");
         System.out.println("They are player number " + players.size());

@@ -47,6 +47,7 @@ public class GameWrongAnswerTest {
     @Test
     public void wrongAnswerShouldPrintAWrongAnswerMessage() {
         new SystemOutCapture() {
+            @Override
             public void whileCaptured() {
 
                 Players players = mock(Players.class);
@@ -55,6 +56,7 @@ public class GameWrongAnswerTest {
                 game.wrongAnswer();
 
                 assertThat(capturedSystemOut(), is("Question was incorrectly answered\n"));
+
             }
         }.doCapture();
     }

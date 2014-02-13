@@ -1,4 +1,3 @@
-
 package com.adaptionsoft.games.trivia.runner;
 
 import com.adaptionsoft.games.uglytrivia.Game;
@@ -6,7 +5,6 @@ import com.adaptionsoft.games.uglytrivia.Players;
 import com.adaptionsoft.games.uglytrivia.Questions;
 
 import java.util.Random;
-
 
 public class GameRunner {
 
@@ -34,7 +32,6 @@ public class GameRunner {
             } else {
                 notAWinner = aGame.correctAnswer();
             }
-
 
         } while (notAWinner);
 
