@@ -3,11 +3,9 @@ package com.adaptionsoft.games.uglytrivia;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.*;
 
 public class GameCorrectAnswerTest {
 
@@ -42,7 +40,7 @@ public class GameCorrectAnswerTest {
     public void correctAnswerShouldGetLuckyPlayerOutOfPenaltyBox() {
         Player playerInPenaltyBox = mock(Player.class);
         when(playerInPenaltyBox.isInPenaltyBox()).thenReturn(true);
-        boolean lucky = true;
+        final boolean lucky = true;
         when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(lucky);
         Game game = createGameWithSinglePlayer(playerInPenaltyBox);
 
@@ -55,7 +53,7 @@ public class GameCorrectAnswerTest {
     public void correctAnswerShouldNotGetUnluckyPlayerOutOfPenaltyBox() {
         Player playerInPenaltyBox = mock(Player.class);
         when(playerInPenaltyBox.isInPenaltyBox()).thenReturn(true);
-        boolean unlucky = false;
+        final boolean unlucky = false;
         when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(unlucky);
         Game game = createGameWithSinglePlayer(playerInPenaltyBox);
 
@@ -64,7 +62,27 @@ public class GameCorrectAnswerTest {
         verify(playerInPenaltyBox, never()).exitPenaltyBox();
     }
 
-    // TODO add test for right answer with enough previous coins ends game
+    @Test
+    public void correctAnswerWithNotEnoughCoinsDoesNotEndGame() {
+        Player player = new Player("unlucky");
+        Game game = createGameWithSinglePlayer(player);
+
+        for (int i = 0; i < 5; i++) {
+            assertThat(game.correctAnswer(), is(true));
+        }
+    }
+
+    @Test
+    @Ignore
+    public void correctAnswerWithEnoughCoinsEndsGame() {
+        Player player = mock(Player.class);
+        Game game = createGameWithSinglePlayer(player);
+
+        game.correctAnswer();
+
+
+    }
+
     // TODO add test for output if any
     // TODO refactor duplicated createGameWithSinglePlayer in both test classes
     // TODO verify this are all test cases for correct answer
