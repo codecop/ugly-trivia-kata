@@ -72,6 +72,7 @@ public class Game {
     }
 
     private boolean playerWinsCoin() {
+        System.out.println("Answer was correct!!!!");
         players.currentPlayerAnsweredCorrect();
 
         boolean notWinner = players.didCurrentPlayerNotWin();

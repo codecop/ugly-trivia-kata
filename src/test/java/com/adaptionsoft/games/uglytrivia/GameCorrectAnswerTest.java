@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -82,6 +83,22 @@ public class GameCorrectAnswerTest {
 
         assertThat(game.correctAnswer(), is(false));
     }
+
+    @Test
+    public void correctAnswerShouldPrintAWinMessage() {
+        new SystemOutCapture() {
+            public void whileCaptured() {
+
+                Players players = mock(Players.class);
+                Game game = new Game(players, null);
+
+                game.correctAnswer();
+
+                Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!\n"));
+            }
+        }.doCapture();
+    }
+
 
     // TODO refactor duplicated createGameWithSinglePlayer in both test classes
 }

@@ -44,7 +44,7 @@ public class PlayerTest {
             public void whileCaptured() {
                 player.answeredCorrect();
 
-                Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!\nErik now has 1 Gold Coins.\n"));
+                Assert.assertThat(capturedSystemOut(), is("Erik now has 1 Gold Coins.\n"));
             }
         }.doCapture();
     }

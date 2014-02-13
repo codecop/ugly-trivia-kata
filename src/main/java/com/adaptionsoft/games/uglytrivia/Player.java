@@ -16,7 +16,6 @@ public class Player {
     }
 
     public void answeredCorrect() {
-        System.out.println("Answer was correct!!!!");
         purse++;
         System.out.println(name + " now has " + purse + " Gold Coins.");
     }
