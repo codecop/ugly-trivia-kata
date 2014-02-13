@@ -64,7 +64,7 @@ public class GameCorrectAnswerTest {
 
     @Test
     public void correctAnswerWithNotEnoughCoinsDoesNotEndGame() {
-        Player player = new Player("unlucky");
+        Player player = new Player("Unlucky Bill");
         Game game = createGameWithSinglePlayer(player);
 
         for (int i = 0; i < 5; i++) {
@@ -73,14 +73,14 @@ public class GameCorrectAnswerTest {
     }
 
     @Test
-    @Ignore
     public void correctAnswerWithEnoughCoinsEndsGame() {
-        Player player = mock(Player.class);
+        Player player = new Player("Lucky Luke");
         Game game = createGameWithSinglePlayer(player);
+        for (int i = 0; i < 5; i++) {
+            game.correctAnswer();
+        }
 
-        game.correctAnswer();
-
-
+        assertThat(game.correctAnswer(), is(false));
     }
 
     // TODO add test for output if any
