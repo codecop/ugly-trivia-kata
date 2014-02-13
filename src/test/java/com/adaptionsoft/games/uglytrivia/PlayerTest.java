@@ -31,7 +31,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void newPlayerWith6CoinsShouldNotWin() {
+    public void newPlayerWith6CoinsShouldWin() {
         answerCorrect(6);
  
         assertFalse("new player did not won", player.didPlayerNotWin());
