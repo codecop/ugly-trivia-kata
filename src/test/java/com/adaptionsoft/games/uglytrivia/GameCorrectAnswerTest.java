@@ -13,18 +13,11 @@ public class GameCorrectAnswerTest {
     @Test
     public void correctAnswerShouldGetACoin() {
         Player player = mock(Player.class);
-        Game game = createGameWithSinglePlayer(player);
+        Game game = GameBuilder.createGameWithSinglePlayer(player);
 
         game.correctAnswer();
 
         verify(player, times(1)).answeredCorrect();
-    }
-
-    private Game createGameWithSinglePlayer(Player player) {
-        // TODO refactor duplicated createGameWithSinglePlayer out of both test classes
-        Players players = new Players();
-        players.add(player);
-        return new Game(players, null);
     }
 
     @Test
@@ -44,7 +37,7 @@ public class GameCorrectAnswerTest {
         when(playerInPenaltyBox.isInPenaltyBox()).thenReturn(true);
         final boolean lucky = true;
         when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(lucky);
-        Game game = createGameWithSinglePlayer(playerInPenaltyBox);
+        Game game = GameBuilder.createGameWithSinglePlayer(playerInPenaltyBox);
 
         game.correctAnswer();
 
@@ -57,7 +50,7 @@ public class GameCorrectAnswerTest {
         when(playerInPenaltyBox.isInPenaltyBox()).thenReturn(true);
         final boolean unlucky = false;
         when(playerInPenaltyBox.isGettingOutOfPenaltyBox()).thenReturn(unlucky);
-        Game game = createGameWithSinglePlayer(playerInPenaltyBox);
+        Game game = GameBuilder.createGameWithSinglePlayer(playerInPenaltyBox);
 
         game.correctAnswer();
 
@@ -67,7 +60,7 @@ public class GameCorrectAnswerTest {
     @Test
     public void correctAnswerWithNotEnoughCoinsDoesNotEndGame() {
         Player player = new Player("Unlucky Bill");
-        Game game = createGameWithSinglePlayer(player);
+        Game game = GameBuilder.createGameWithSinglePlayer(player);
 
         for (int i = 0; i < 5; i++) {
             assertThat(game.correctAnswer(), is(true));
@@ -77,7 +70,7 @@ public class GameCorrectAnswerTest {
     @Test
     public void correctAnswerWithEnoughCoinsEndsGame() {
         Player player = new Player("Lucky Luke");
-        Game game = createGameWithSinglePlayer(player);
+        Game game = GameBuilder.createGameWithSinglePlayer(player);
         for (int i = 0; i < 5; i++) {
             game.correctAnswer();
         }

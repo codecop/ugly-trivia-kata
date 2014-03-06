@@ -11,7 +11,7 @@ public class GameWrongAnswerTest {
     @Test
     public void wrongAnswerShouldSendPlayerToPenaltyBox() {
         Player lonelyTom = new Player("Lonely Tom");
-        Game game = createGameWithSinglePlayer(lonelyTom);
+        Game game = GameBuilder.createGameWithSinglePlayer(lonelyTom);
 
         game.wrongAnswer();
 
@@ -21,17 +21,11 @@ public class GameWrongAnswerTest {
     @Test
     public void wrongAnswerShouldNotGetACoin() {
         Player player = mock(Player.class);
-        Game game = createGameWithSinglePlayer(player);
+        Game game = GameBuilder.createGameWithSinglePlayer(player);
 
         game.wrongAnswer();
 
         verify(player, never()).answeredCorrect();
-    }
-
-    private Game createGameWithSinglePlayer(Player player) {
-        Players players = new Players();
-        players.add(player);
-        return new Game(players, null);
     }
 
     @Test
