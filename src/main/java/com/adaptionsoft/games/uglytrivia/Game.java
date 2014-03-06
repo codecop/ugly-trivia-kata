@@ -35,12 +35,12 @@ public class Game {
     }
 
     private void moveAndAskCurrentPlayerFor(int eyesOfDice) {
-        getCurrentPlayer().advanceBy(eyesOfDice);
+        players.advanceBy(eyesOfDice);
         askQuestion();
     }
 
     private void askQuestion() {
-        Category currentCategory = getCurrentPlayer().currentCategory();
+        Category currentCategory = players.currentCategory();
         System.out.println("The category is " + currentCategory);
         System.out.println(questions.nextFor(currentCategory));
     }

@@ -10,6 +10,10 @@ public class GameBuilder {
     }
 
     public static Game createGameWith(Players players) {
-        return new Game(players, null);
+        return createGameWith(players, null);
+    }
+
+    public static Game createGameWith(Players players, Questions questions) {
+        return new Game(players, questions);
     }
 }

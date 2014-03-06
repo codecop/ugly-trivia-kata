@@ -46,4 +46,12 @@ public class Players {
     public boolean didCurrentPlayerNotWin() {
         return getCurrentPlayer().didPlayerNotWin();
     }
+
+    public void advanceBy(int eyesOfDice) {
+        getCurrentPlayer().advanceBy(eyesOfDice);
+    }
+
+    public Category currentCategory() {
+        return getCurrentPlayer().currentCategory();
+    }
 }
