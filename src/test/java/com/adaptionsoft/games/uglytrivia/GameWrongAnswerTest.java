@@ -31,7 +31,7 @@ public class GameWrongAnswerTest {
     @Test
     public void wrongAnswerShouldEndTurn() {
         Players players = mock(Players.class);
-        Game game = new Game(players, null);
+        Game game = GameBuilder.createGameWith(players);
 
         game.wrongAnswer();
 
@@ -44,7 +44,7 @@ public class GameWrongAnswerTest {
             {
 
                 Players players = mock(Players.class);
-                Game game = new Game(players, null);
+                Game game = GameBuilder.createGameWith(players);
 
                 game.wrongAnswer();
 
@@ -57,7 +57,7 @@ public class GameWrongAnswerTest {
     @Test
     public void wrongAnswerShouldNeverWinGame() {
         Players players = mock(Players.class);
-        Game game = new Game(players, null);
+        Game game = GameBuilder.createGameWith(players);
 
         assertFalse("Wrong answer should never win game", !game.wrongAnswer());
     }

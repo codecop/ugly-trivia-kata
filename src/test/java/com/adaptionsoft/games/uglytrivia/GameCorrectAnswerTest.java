@@ -23,7 +23,7 @@ public class GameCorrectAnswerTest {
     @Test
     public void correctAnswerShouldEndTurn() {
         Players players = mock(Players.class);
-        Game game = new Game(players, null);
+        Game game = GameBuilder.createGameWith(players);
 
         game.correctAnswer();
 
@@ -84,7 +84,7 @@ public class GameCorrectAnswerTest {
             {
 
                 Players players = mock(Players.class);
-                Game game = new Game(players, null);
+                Game game = GameBuilder.createGameWith(players);
 
                 game.correctAnswer();
 
