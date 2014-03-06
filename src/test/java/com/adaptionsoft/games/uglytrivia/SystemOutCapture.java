@@ -2,6 +2,8 @@ package com.adaptionsoft.games.uglytrivia;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class SystemOutCapture {
     private final PrintStream originalSystemOut;
@@ -24,6 +26,10 @@ public abstract class SystemOutCapture {
 
     protected String cr() {
         return System.getProperty("line.separator");
+    }
+
+    protected List<String> capturedSystemOutLines() {
+        return Arrays.asList(capturedSystemOut().split(cr()));
     }
 
     public void resetSystemOut() {
