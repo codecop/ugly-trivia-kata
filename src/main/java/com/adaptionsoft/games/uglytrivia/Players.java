@@ -54,4 +54,8 @@ public class Players {
     public Category currentCategory() {
         return getCurrentPlayer().currentCategory();
     }
+
+    public void setGettingOutOfPenaltyBox(boolean gettingOut) {
+        getCurrentPlayer().setGettingOutOfPenaltyBox(gettingOut);
+    }
 }

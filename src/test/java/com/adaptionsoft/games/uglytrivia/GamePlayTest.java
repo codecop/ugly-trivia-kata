@@ -49,4 +49,22 @@ public class GamePlayTest {
         verify(questions).nextFor(Category.POP);
     }
 
+    @Test
+    public void playerInPenaltyBoxShouldNotGetOutOnEvenDice() {
+        when(players.isCurrentPlayerInPenaltyBox()).thenReturn(true);
+
+        game.playCurrentPlayer(2);
+
+        verify(players).setGettingOutOfPenaltyBox(false);
+    }
+
+    @Test
+    public void playerInPenaltyBoxShouldGetOutOnOddDice() {
+        when(players.isCurrentPlayerInPenaltyBox()).thenReturn(true);
+
+        game.playCurrentPlayer(1);
+
+        verify(players).setGettingOutOfPenaltyBox(true);
+    }
+
 }

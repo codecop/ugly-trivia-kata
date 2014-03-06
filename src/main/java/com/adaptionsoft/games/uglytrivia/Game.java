@@ -23,10 +23,10 @@ public class Game {
 
     private void handleCurrentPlayerPenalty(int eyesOfDice) {
         if (isOdd(eyesOfDice)) {
-            getCurrentPlayer().setGettingOutOfPenaltyBox(true);
+            players.setGettingOutOfPenaltyBox(true);
             moveAndAskCurrentPlayerFor(eyesOfDice);
         } else {
-            getCurrentPlayer().setGettingOutOfPenaltyBox(false);
+            players.setGettingOutOfPenaltyBox(false);
         }
     }
 
