@@ -5,9 +5,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class GamePlayTest {
 
@@ -51,20 +49,64 @@ public class GamePlayTest {
 
     @Test
     public void playerInPenaltyBoxShouldNotGetOutOnEvenDice() {
-        when(players.isCurrentPlayerInPenaltyBox()).thenReturn(true);
+        putPlayerIntoPenaltyBox();
 
-        game.playCurrentPlayer(2);
+        int evenEyesOfDice = 2;
+        game.playCurrentPlayer(evenEyesOfDice);
 
         verify(players).setGettingOutOfPenaltyBox(false);
     }
 
     @Test
     public void playerInPenaltyBoxShouldGetOutOnOddDice() {
-        when(players.isCurrentPlayerInPenaltyBox()).thenReturn(true);
+        putPlayerIntoPenaltyBox();
 
-        game.playCurrentPlayer(1);
+        int oddEyesOfDice = 1;
+        game.playCurrentPlayer(oddEyesOfDice);
 
         verify(players).setGettingOutOfPenaltyBox(true);
     }
 
+    @Test
+    public void playerInPenaltyBoxShouldAdvanceByOddEyesOfDice() {
+        putPlayerIntoPenaltyBox();
+
+        int oddEyesOfDice = 1;
+        game.playCurrentPlayer(oddEyesOfDice);
+
+        verify(players).advanceBy(oddEyesOfDice);
+    }
+
+    @Test
+    public void playerInPenaltyBoxShouldNeverAdvanceOnEvenEyesOfDice() {
+        putPlayerIntoPenaltyBox();
+
+        int evenEyesOfDice = 2;
+        game.playCurrentPlayer(evenEyesOfDice);
+
+        verify(players, never()).advanceBy(any(Integer.class));
+    }
+
+    @Test
+    public void playerInPenaltyBoxShouldBeAskedQuestionOnOddDice() {
+        new SystemOutCapture() {
+            {
+
+                putPlayerIntoPenaltyBox();
+                when(questions.nextFor(any(Category.class))).thenReturn("Pop Question 1");
+
+                int oddEyesOfDice = 1;
+                game.playCurrentPlayer(oddEyesOfDice);
+
+                assertThat(capturedSystemOutLines(), hasItems("Pop Question 1"));
+
+            }
+        }.resetSystemOut();
+    }
+
+    private void putPlayerIntoPenaltyBox() {
+        when(players.isCurrentPlayerInPenaltyBox()).thenReturn(true);
+    }
+
+    // TODO tests too much duplicated? Almost same tests again for penalty and not penalty box
 }

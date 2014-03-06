@@ -46,7 +46,7 @@ public class Game {
     }
 
     private Player getCurrentPlayer() {
-        // TODO if this goes away, rename players to currentPlayer, remove xCurrentPlayer in all method names
+        // TODO next if this goes away, rename players to currentPlayer, remove xCurrentPlayer in all method names
         return players.getCurrentPlayer();
     }
 
