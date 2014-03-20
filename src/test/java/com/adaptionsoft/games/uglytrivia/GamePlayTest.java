@@ -1,5 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -13,6 +14,11 @@ public class GamePlayTest {
     private Questions questions = mock(Questions.class);
     private Game game = GameBuilder.createGameWith(players, questions);
 
+    @Before
+    public void prepareQuestion() {
+        when(players.currentCategory()).thenReturn(Category.SPORTS);
+    }
+    
     @Test
     public void playerShouldAdvanceByEyesOfDice() {
         int eyesOfDice = 3;

@@ -41,7 +41,7 @@ public class Game {
 
     private void askQuestion() {
         Category currentCategory = players.currentCategory();
-        System.out.println("The category is " + currentCategory);
+        System.out.println("The category is " + currentCategory.displayName());
         System.out.println(questions.nextFor(currentCategory));
     }
 
@@ -54,7 +54,7 @@ public class Game {
         if (players.isCurrentPlayerInPenaltyBox()) {
             return correctAnswerInPenaltyBox();
         } else {
-            return playerWinsCoin();
+            return playerWinsCoin(); // had typo corrent
         }
         // TODO what is that boolean return value?
     }
