@@ -11,7 +11,12 @@ public class GameRunner {
     private static boolean notAWinner;
 
     public static void main(String[] args) {
+        Random rand = new Random();
+        play(rand);
+    }
 
+    public static void play(Random rand) {
+        
         Players players = new Players();
         players.add("Chet");
         players.add("Pat");
@@ -20,8 +25,6 @@ public class GameRunner {
         Questions questions = new Questions();
 
         Game aGame = new Game(players, questions);
-
-        Random rand = new Random();
 
         do {
 
@@ -34,6 +37,6 @@ public class GameRunner {
             }
 
         } while (notAWinner);
-
+        
     }
 }
