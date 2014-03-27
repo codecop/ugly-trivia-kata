@@ -27,19 +27,19 @@ public class PlayersTest {
         players.changeCurrentPlayer();
         players.changeCurrentPlayer();
 
-        assertThat(players.getCurrentPlayer().getName(), is(ANY_PLAYER));
+        assertThat(players.getCurrentPlayerName(), is(ANY_PLAYER));
     }
 
     @Test
     public void shouldGiveFirstPlayer() {
-        assertThat(players.getCurrentPlayer().getName(), is(PLAYER_ONE));
+        assertThat(players.getCurrentPlayerName(), is(PLAYER_ONE));
     }
 
     @Test
     public void shouldIteratePlayers() {
         players.changeCurrentPlayer();
 
-        assertThat(players.getCurrentPlayer().getName(), is(PLAYER_TWO));
+        assertThat(players.getCurrentPlayerName(), is(PLAYER_TWO));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class PlayersTest {
         players.changeCurrentPlayer();
         players.changeCurrentPlayer();
 
-        assertThat(players.getCurrentPlayer().getName(), is(PLAYER_ONE));
+        assertThat(players.getCurrentPlayerName(), is(PLAYER_ONE));
     }
 
     @Test(expected = IllegalAccessException.class)

@@ -20,8 +20,7 @@ public class Players {
         System.out.println("They are player number " + players.size());
     }
 
-    public Player getCurrentPlayer() {
-        // TODO next if this goes private, rename players to currentPlayer, remove xCurrentPlayer in all method names
+    private Player getCurrentPlayer() {
         return players.get(currentPlayer);
     }
 

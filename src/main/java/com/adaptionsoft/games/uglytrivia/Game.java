@@ -3,6 +3,8 @@ package com.adaptionsoft.games.uglytrivia;
 public class Game {
 
     private final Questions questions;
+
+    // TODO rename players to currentPlayer, remove xCurrentPlayer in all method names
     private final Players players;
 
     public Game(Players players, Questions questions) {
