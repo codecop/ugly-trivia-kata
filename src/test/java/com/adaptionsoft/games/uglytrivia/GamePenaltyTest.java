@@ -72,4 +72,13 @@ public class GamePenaltyTest {
 
         verify(players, never()).advanceBy(any(Integer.class));
     }
+
+    @Test
+    public void playerInPenaltyBoxShouldWinCoinOnCorrectAnswer(){
+        when(players.isCurrentPlayerGettingOutOfPenaltyBox()).thenReturn(true);
+
+        game.correctAnswer();
+
+        verify(players, times(1)).currentPlayerAnsweredCorrect();
+    }
 }

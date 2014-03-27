@@ -55,7 +55,7 @@ public class Game {
     }
 
     private boolean correctAnswerInPenaltyBox() {
-        if (players.getCurrentPlayer().isGettingOutOfPenaltyBox()) {
+        if (players.isCurrentPlayerGettingOutOfPenaltyBox()) {
             return playerWinsCoin();
         } else {
             return playerDoesNotWinCoin();

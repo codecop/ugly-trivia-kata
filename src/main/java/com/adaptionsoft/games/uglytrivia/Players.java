@@ -63,4 +63,8 @@ public class Players {
     public String getCurrentPlayerName() {
         return getCurrentPlayer().getName();
     }
+
+    public boolean isCurrentPlayerGettingOutOfPenaltyBox() {
+       return getCurrentPlayer().isGettingOutOfPenaltyBox();
+    }
 }
