@@ -55,15 +55,19 @@ public class Players {
         return getCurrentPlayer().currentCategory();
     }
 
-    public void setGettingOutOfPenaltyBox(boolean gettingOut) {
-        getCurrentPlayer().setGettingOutOfPenaltyBox(gettingOut);
-    }
-
     public String getName() {
         return getCurrentPlayer().getName();
     }
 
     public boolean isGettingOutOfPenaltyBox() {
        return getCurrentPlayer().isGettingOutOfPenaltyBox();
+    }
+
+    public void willGetOutOfPenaltyBox() {
+        getCurrentPlayer().setGettingOutOfPenaltyBox(true);
+    }
+
+    public void willStayInPenaltyBox() {
+        getCurrentPlayer().setGettingOutOfPenaltyBox(false);
     }
 }

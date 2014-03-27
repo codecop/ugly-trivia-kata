@@ -29,7 +29,7 @@ public class GamePenaltyTest {
 
         game.play(oddEyesOfDice);
 
-        verify(players).setGettingOutOfPenaltyBox(true);
+        verify(players).willGetOutOfPenaltyBox();
     }
 
     @Test
@@ -61,7 +61,7 @@ public class GamePenaltyTest {
 
         game.play(evenEyesOfDice);
 
-        verify(players).setGettingOutOfPenaltyBox(false);
+        verify(players).willStayInPenaltyBox();
     }
 
     @Test

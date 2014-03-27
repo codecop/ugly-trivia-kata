@@ -24,11 +24,10 @@ public class Game {
 
     private void playWithPenalty(int eyesOfDice) {
         if (isOdd(eyesOfDice)) {
-            // todo create new method that hides the boolean parameter
-            currentPlayer.setGettingOutOfPenaltyBox(true);
+            currentPlayer.willGetOutOfPenaltyBox();
             moveAndAskQuestionFor(eyesOfDice);
         } else {
-            currentPlayer.setGettingOutOfPenaltyBox(false);
+            currentPlayer.willStayInPenaltyBox();
         }
     }
 
