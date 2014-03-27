@@ -3,32 +3,32 @@ package com.adaptionsoft.games.uglytrivia;
 public class Game {
 
     private final Questions questions;
+    private final Players currentPlayer;
+    // TODO smell: Players class reads better as currentPlayer field.
 
-    // TODO rename players to currentPlayer, remove xCurrentPlayer in all method names
-    private final Players players;
-
-    public Game(Players players, Questions questions) {
-        this.players = players;
+    public Game(Players currentPlayer, Questions questions) {
+        this.currentPlayer = currentPlayer;
         this.questions = questions;
     }
 
-    public void playCurrentPlayer(int eyesOfDice) {
-        System.out.println(players.getCurrentPlayerName() + " is the current player");
+    public void play(int eyesOfDice) {
+        System.out.println(currentPlayer.getName() + " is the current player");
         System.out.println("They have rolled a " + eyesOfDice);
 
-        if (players.isCurrentPlayerInPenaltyBox()) {
-            handleCurrentPlayerPenalty(eyesOfDice);
+        if (currentPlayer.isInPenaltyBox()) {
+            playWithPenalty(eyesOfDice);
         } else {
-            moveAndAskCurrentPlayerFor(eyesOfDice);
+            moveAndAskQuestionFor(eyesOfDice);
         }
     }
 
-    private void handleCurrentPlayerPenalty(int eyesOfDice) {
+    private void playWithPenalty(int eyesOfDice) {
         if (isOdd(eyesOfDice)) {
-            players.setGettingOutOfPenaltyBox(true);
-            moveAndAskCurrentPlayerFor(eyesOfDice);
+            // todo create new method that hides the boolean parameter
+            currentPlayer.setGettingOutOfPenaltyBox(true);
+            moveAndAskQuestionFor(eyesOfDice);
         } else {
-            players.setGettingOutOfPenaltyBox(false);
+            currentPlayer.setGettingOutOfPenaltyBox(false);
         }
     }
 
@@ -36,28 +36,28 @@ public class Game {
         return eyesOfDice % 2 != 0;
     }
 
-    private void moveAndAskCurrentPlayerFor(int eyesOfDice) {
-        players.advanceBy(eyesOfDice);
+    private void moveAndAskQuestionFor(int eyesOfDice) {
+        currentPlayer.advanceBy(eyesOfDice);
         askQuestion();
     }
 
     private void askQuestion() {
-        Category currentCategory = players.currentCategory();
+        Category currentCategory = currentPlayer.currentCategory();
         System.out.println("The category is " + currentCategory.displayName());
         System.out.println(questions.nextFor(currentCategory));
     }
 
     public boolean correctAnswer() {
-        if (players.isCurrentPlayerInPenaltyBox()) {
+        if (currentPlayer.isInPenaltyBox()) {
             return correctAnswerInPenaltyBox();
         } else {
-            return playerWinsCoin(); // had typo corrent
+            return playerWinsCoin(); // System.out.println had typo "corrent" instead of "correct"
         }
         // TODO what is that boolean return value?
     }
 
     private boolean correctAnswerInPenaltyBox() {
-        if (players.isCurrentPlayerGettingOutOfPenaltyBox()) {
+        if (currentPlayer.isGettingOutOfPenaltyBox()) {
             return playerWinsCoin();
         } else {
             return playerDoesNotWinCoin();
@@ -65,23 +65,23 @@ public class Game {
     }
 
     private boolean playerDoesNotWinCoin() {
-        players.changeCurrentPlayer();
+        currentPlayer.nextPlayer();
         return true;
     }
 
     private boolean playerWinsCoin() {
         System.out.println("Answer was correct!!!!");
-        players.currentPlayerAnsweredCorrect();
+        currentPlayer.answeredCorrect();
 
-        boolean notWinner = players.didCurrentPlayerNotWin();
-        players.changeCurrentPlayer();
+        boolean notWinner = currentPlayer.didNotWin();
+        currentPlayer.nextPlayer();
 
         return notWinner;
     }
 
     public boolean wrongAnswer() {
         System.out.println("Question was incorrectly answered");
-        players.currentPlayerGoToPenaltyBox();
+        currentPlayer.goToPenaltyBox();
 
         return playerDoesNotWinCoin();
     }

@@ -24,30 +24,30 @@ public class PlayersTest {
     @Test
     public void shouldAddOnePlayer() {
         players.add(new Player(ANY_PLAYER));
-        players.changeCurrentPlayer();
-        players.changeCurrentPlayer();
+        players.nextPlayer();
+        players.nextPlayer();
 
-        assertThat(players.getCurrentPlayerName(), is(ANY_PLAYER));
+        assertThat(players.getName(), is(ANY_PLAYER));
     }
 
     @Test
     public void shouldGiveFirstPlayer() {
-        assertThat(players.getCurrentPlayerName(), is(PLAYER_ONE));
+        assertThat(players.getName(), is(PLAYER_ONE));
     }
 
     @Test
     public void shouldIteratePlayers() {
-        players.changeCurrentPlayer();
+        players.nextPlayer();
 
-        assertThat(players.getCurrentPlayerName(), is(PLAYER_TWO));
+        assertThat(players.getName(), is(PLAYER_TWO));
     }
 
     @Test
     public void shouldStartWithFirstPlayerAgain() {
-        players.changeCurrentPlayer();
-        players.changeCurrentPlayer();
+        players.nextPlayer();
+        players.nextPlayer();
 
-        assertThat(players.getCurrentPlayerName(), is(PLAYER_ONE));
+        assertThat(players.getName(), is(PLAYER_ONE));
     }
 
     @Test(expected = IllegalAccessException.class)

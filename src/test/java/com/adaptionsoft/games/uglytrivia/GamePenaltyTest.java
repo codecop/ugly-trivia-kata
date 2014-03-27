@@ -20,14 +20,14 @@ public class GamePenaltyTest {
 
     @Before
     public void putPlayerIntoPenaltyBox() {
-        when(players.isCurrentPlayerInPenaltyBox()).thenReturn(true);
+        when(players.isInPenaltyBox()).thenReturn(true);
     }
 
     @Test
     public void playerInPenaltyBoxShouldGetOutOnOddDice() {
         int oddEyesOfDice = 1;
 
-        game.playCurrentPlayer(oddEyesOfDice);
+        game.play(oddEyesOfDice);
 
         verify(players).setGettingOutOfPenaltyBox(true);
     }
@@ -36,7 +36,7 @@ public class GamePenaltyTest {
     public void playerInPenaltyBoxShouldAdvanceByOddEyesOfDice() {
         int oddEyesOfDice = 1;
 
-        game.playCurrentPlayer(oddEyesOfDice);
+        game.play(oddEyesOfDice);
 
         verify(players).advanceBy(oddEyesOfDice);
     }
@@ -48,7 +48,7 @@ public class GamePenaltyTest {
                 when(questions.nextFor(any(Category.class))).thenReturn("Pop Question 1");
                 int oddEyesOfDice = 1;
 
-                game.playCurrentPlayer(oddEyesOfDice);
+                game.play(oddEyesOfDice);
 
                 assertThat(capturedSystemOutLines(), hasItems("Pop Question 1"));
             }
@@ -59,7 +59,7 @@ public class GamePenaltyTest {
     public void playerInPenaltyBoxShouldNotGetOutOnEvenDice() {
         int evenEyesOfDice = 2;
 
-        game.playCurrentPlayer(evenEyesOfDice);
+        game.play(evenEyesOfDice);
 
         verify(players).setGettingOutOfPenaltyBox(false);
     }
@@ -68,17 +68,17 @@ public class GamePenaltyTest {
     public void playerInPenaltyBoxShouldNeverAdvanceOnEvenEyesOfDice() {
         int evenEyesOfDice = 2;
 
-        game.playCurrentPlayer(evenEyesOfDice);
+        game.play(evenEyesOfDice);
 
         verify(players, never()).advanceBy(any(Integer.class));
     }
 
     @Test
     public void playerInPenaltyBoxShouldWinCoinOnCorrectAnswer(){
-        when(players.isCurrentPlayerGettingOutOfPenaltyBox()).thenReturn(true);
+        when(players.isGettingOutOfPenaltyBox()).thenReturn(true);
 
         game.correctAnswer();
 
-        verify(players, times(1)).currentPlayerAnsweredCorrect();
+        verify(players, times(1)).answeredCorrect();
     }
 }

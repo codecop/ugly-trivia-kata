@@ -24,26 +24,26 @@ public class Players {
         return players.get(currentPlayer);
     }
 
-    public void changeCurrentPlayer() {
+    public void nextPlayer() {
         currentPlayer++;
         if (currentPlayer == players.size()) {
             currentPlayer = 0;
         }
     }
 
-    public void currentPlayerGoToPenaltyBox() {
+    public void goToPenaltyBox() {
         getCurrentPlayer().goToPenaltyBox();
     }
 
-    public boolean isCurrentPlayerInPenaltyBox() {
+    public boolean isInPenaltyBox() {
         return getCurrentPlayer().isInPenaltyBox();
     }
 
-    public void currentPlayerAnsweredCorrect() {
+    public void answeredCorrect() {
         getCurrentPlayer().answeredCorrect();
     }
 
-    public boolean didCurrentPlayerNotWin() {
+    public boolean didNotWin() {
         return getCurrentPlayer().didPlayerNotWin();
     }
 
@@ -59,11 +59,11 @@ public class Players {
         getCurrentPlayer().setGettingOutOfPenaltyBox(gettingOut);
     }
 
-    public String getCurrentPlayerName() {
+    public String getName() {
         return getCurrentPlayer().getName();
     }
 
-    public boolean isCurrentPlayerGettingOutOfPenaltyBox() {
+    public boolean isGettingOutOfPenaltyBox() {
        return getCurrentPlayer().isGettingOutOfPenaltyBox();
     }
 }

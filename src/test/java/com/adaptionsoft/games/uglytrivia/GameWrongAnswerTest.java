@@ -35,7 +35,7 @@ public class GameWrongAnswerTest {
 
         game.wrongAnswer();
 
-        verify(players).changeCurrentPlayer();
+        verify(players).nextPlayer();
     }
 
     @Test

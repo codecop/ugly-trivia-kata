@@ -27,7 +27,7 @@ public class GameCorrectAnswerTest {
 
         game.correctAnswer();
 
-        verify(players).changeCurrentPlayer();
+        verify(players).nextPlayer();
     }
 
     @Test
