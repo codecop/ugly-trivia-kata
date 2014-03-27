@@ -7,12 +7,20 @@ public class Player {
     private final String name;
     private final Place place = new Place();
 
+    private int purse;
     private boolean inPenaltyBox;
     private static boolean gettingOutOfPenaltyBox; // TODO (not in scope) bug: State is global not for each player. Player can never come out of penalty box.
-    private int purse;
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Category currentCategory() {
+        return place.currentCategory();
     }
 
     public void answeredCorrect() {
@@ -22,11 +30,6 @@ public class Player {
 
     public boolean didPlayerNotWin() {
         return !(purse == NEEDED_COINS_TO_WIN);
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
     public void advanceBy(int eyesOfDice) {
@@ -62,11 +65,8 @@ public class Player {
         return gettingOutOfPenaltyBox;
     }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name;
-    }
-
-    public Category currentCategory() {
-        return place.currentCategory();
     }
 }
