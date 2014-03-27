@@ -14,7 +14,7 @@ public class Players {
     }
 
     public void add(Player player) {
-        // TODO missing check: No check for MAXIMUM_NUMBER_PLAYERS
+        // TODO (not in scope) missing check: No check for MAXIMUM_NUMBER_PLAYERS
         players.add(player);
         System.out.println(player.getName() + " was added");
         System.out.println("They are player number " + players.size());
