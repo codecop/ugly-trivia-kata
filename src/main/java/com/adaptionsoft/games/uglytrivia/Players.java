@@ -21,6 +21,7 @@ public class Players {
     }
 
     public Player getCurrentPlayer() {
+        // TODO next if this goes private, rename players to currentPlayer, remove xCurrentPlayer in all method names
         return players.get(currentPlayer);
     }
 
@@ -57,5 +58,9 @@ public class Players {
 
     public void setGettingOutOfPenaltyBox(boolean gettingOut) {
         getCurrentPlayer().setGettingOutOfPenaltyBox(gettingOut);
+    }
+
+    public String getCurrentPlayerName() {
+        return getCurrentPlayer().getName();
     }
 }

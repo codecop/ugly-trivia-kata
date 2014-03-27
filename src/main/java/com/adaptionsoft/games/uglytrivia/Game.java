@@ -11,7 +11,7 @@ public class Game {
     }
 
     public void playCurrentPlayer(int eyesOfDice) {
-        System.out.println(getCurrentPlayer() + " is the current player");
+        System.out.println(players.getCurrentPlayerName() + " is the current player");
         System.out.println("They have rolled a " + eyesOfDice);
 
         if (players.isCurrentPlayerInPenaltyBox()) {
@@ -45,11 +45,6 @@ public class Game {
         System.out.println(questions.nextFor(currentCategory));
     }
 
-    private Player getCurrentPlayer() {
-        // TODO next if this goes away, rename players to currentPlayer, remove xCurrentPlayer in all method names
-        return players.getCurrentPlayer();
-    }
-
     public boolean correctAnswer() {
         if (players.isCurrentPlayerInPenaltyBox()) {
             return correctAnswerInPenaltyBox();
@@ -60,7 +55,7 @@ public class Game {
     }
 
     private boolean correctAnswerInPenaltyBox() {
-        if (getCurrentPlayer().isGettingOutOfPenaltyBox()) {
+        if (players.getCurrentPlayer().isGettingOutOfPenaltyBox()) {
             return playerWinsCoin();
         } else {
             return playerDoesNotWinCoin();
