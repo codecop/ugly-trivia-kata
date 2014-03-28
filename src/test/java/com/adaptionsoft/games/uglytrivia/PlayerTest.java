@@ -26,7 +26,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void newPlayerWith6CoinsShouldNotWin() {
+    public void newPlayerWith6CoinsShouldWin() {
         player.answeredCorrect();
         player.answeredCorrect();
         player.answeredCorrect();
