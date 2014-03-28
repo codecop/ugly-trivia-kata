@@ -10,13 +10,13 @@ public class Player {
         this.name = name;
     }
 
-    void answeredCorrect() {
+    public void answeredCorrect() {
         System.out.println("Answer was correct!!!!");
         purse++;
         System.out.println(name + " now has " + purse + " Gold Coins.");
     }
 
-    boolean didPlayerNotWin() {
+    public boolean didPlayerNotWin() {
         return !(purse == NEEDED_COINS_TO_WIN);
     }
 

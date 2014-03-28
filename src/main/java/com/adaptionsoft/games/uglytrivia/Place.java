@@ -5,7 +5,7 @@ public class Place {
 
     private int place;
 
-    void advanceCurrentPlayerBy(int roll) {
+    public void advanceCurrentPlayerBy(int roll) {
         place = place + roll;
         if (place > NUMBER_PLACES -1) place = place - NUMBER_PLACES;
     }
