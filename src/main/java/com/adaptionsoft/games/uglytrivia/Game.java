@@ -8,8 +8,8 @@ public class Game {
     private static final int MAXIMUM_NUMBER_PLAYERS = 6;
     public static final int NUMBER_QUESTIONS = 50;
 
-    private List<Player> players = new ArrayList<Player>();               // players inconsistent with places
-    private Place[] places = new Place[MAXIMUM_NUMBER_PLAYERS];                               //   places to sit in 0-11
+    private List<Player> players = new ArrayList<Player>(); 
+    private Place[] places = new Place[MAXIMUM_NUMBER_PLAYERS]; 
     private boolean[] inPenaltyBox = new boolean[MAXIMUM_NUMBER_PLAYERS];
 
     private LinkedList<String> popQuestions = new LinkedList<String>();
@@ -23,8 +23,6 @@ public class Game {
     public Game() {
         createQuestions();
     }
-
-    // TODO move questions, categories and everything into place. place knows its category and its questions or the category know its question.
 
     private void createQuestions() {
         for (int i = 0; i < NUMBER_QUESTIONS; i++) {
@@ -81,7 +79,7 @@ public class Game {
     private void askQuestion() {
         System.out.println("The category is " + currentCategory());
 
-        if (currentCategory().equals("Pop"))                               // TODO categories? enum?
+        if (currentCategory().equals("Pop")) // TODO categories as enum?
             System.out.println(popQuestions.removeFirst());
         if (currentCategory().equals("Science"))
             System.out.println(scienceQuestions.removeFirst());
@@ -101,7 +99,7 @@ public class Game {
         if (place == 1) return "Science";
         if (place == 2) return "Sports";
         if (place == 3) return "Rock";
-        return "Rock"; // TODO throw new IllegalStateException("Current player is out of places");
+        return "Rock"; 
     }
 
     public boolean correctAnswer() {
