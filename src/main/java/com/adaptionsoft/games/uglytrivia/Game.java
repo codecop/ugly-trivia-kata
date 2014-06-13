@@ -6,14 +6,24 @@ public class Game {
     private final Players currentPlayer;
     // TODO smell: Players class reads better as currentPlayer field.
 
+    static class UI {
+
+        public void currentPlayersTurn(String name, int eyesOfDice) {
+            System.out.println(name + " is the current player");
+            System.out.println("They have rolled a " + eyesOfDice);
+        }
+        
+    }
+    
+    final UI show = new UI();
+    
     public Game(Players currentPlayer, Questions questions) {
         this.currentPlayer = currentPlayer;
         this.questions = questions;
     }
 
     public void play(int eyesOfDice) {
-        System.out.println(currentPlayer.getName() + " is the current player");
-        System.out.println("They have rolled a " + eyesOfDice);
+        show.currentPlayersTurn(currentPlayer.getName(), eyesOfDice);
 
         if (currentPlayer.isInPenaltyBox()) {
             playWithPenalty(eyesOfDice);
