@@ -6,7 +6,7 @@ public class Player {
 
     private static final int NEEDED_COINS_TO_WIN = 6;
 
-    private final UI show;
+    private final UI showPlayer;
 
     private final String name;
     private final Place place = new Place();
@@ -21,7 +21,7 @@ public class Player {
 
     public Player(String name, UI show) {
         this.name = name;
-        this.show = show;
+        this.showPlayer = show;
     }
 
     public String getName() {
@@ -34,7 +34,7 @@ public class Player {
 
     public void answeredCorrect() {
         purse++;
-        show.playersGold(name, purse);
+        showPlayer.moreMoney(name, purse);
     }
 
     public boolean didPlayerNotWin() {
@@ -43,7 +43,7 @@ public class Player {
 
     public void advanceBy(int eyesOfDice) {
         place.advanceCurrentPlayerBy(eyesOfDice);
-        show.playersLocation(name, place.getPlace());
+        showPlayer.advanceToNewPlace(name, place.getPlace());
     }
 
     public boolean isInPenaltyBox() {
@@ -51,7 +51,7 @@ public class Player {
     }
 
     public void goToPenaltyBox() {
-        show.playerInPenaltyBox(name);
+        showPlayer.goIntoPenaltyBox(name);
         inPenaltyBox = true;
     }
 
@@ -62,7 +62,11 @@ public class Player {
 
     public void setGettingOutOfPenaltyBox(boolean gettingOut) {
         gettingOutOfPenaltyBox = gettingOut;
-        show.playerGettingOutOfBox(name, gettingOutOfPenaltyBox);
+        if (gettingOutOfPenaltyBox) {
+            showPlayer.gettingOutOfPenaltyBox(name);
+        } else {
+            showPlayer.notGettingOutOfPenaltyBox(name);
+        }
     }
 
     public boolean isGettingOutOfPenaltyBox() {
@@ -75,6 +79,6 @@ public class Player {
     }
 
     public void play(int eyesOfDice) {
-        show.currentPlayersTurn(name, eyesOfDice);
+        showPlayer.beginTurn(name, eyesOfDice);
     }
 }

@@ -9,54 +9,58 @@ public class Game {
 
     static class UI {
 
-        public void currentPlayersTurn(String name, int eyesOfDice) {
-            System.out.println(name + " is the current player");
-            System.out.println("They have rolled a " + eyesOfDice);
-        }
-
-        public void nextQuestion(String category, String question) {
+        public void question(String category, String question) {
             System.out.println("The category is " + category);
             System.out.println(question);
         }
 
-        public void playerAnsweringCorrect() {
+        public void correctAnswer() {
             System.out.println("Answer was correct!!!!");
         }
 
-        public void playerAnsweringIncorrect() {
+        public void wrongAnswer() {
             System.out.println("Question was incorrectly answered");
-        }
-
-        // TODO name is first, use PlayerUI?
-
-        public void playersGold(String name, int purse) {
-            System.out.println(name + " now has " + purse + " Gold Coins.");
-        }
-
-        public void playersLocation(String name, int place) {
-            System.out.println(name + "'s new location is " + place);
-        }
-
-        public void playerInPenaltyBox(String name) {
-            System.out.println(name + " was sent to the penalty box");
-        }
-
-        public void playerGettingOutOfBox(String name, boolean gettingOutOfPenaltyBox) {
-            String maybe = "not ";
-            if (gettingOutOfPenaltyBox) {
-                maybe = "";
-            }
-            System.out.println(name + " is " + maybe + "getting out of the penalty box");
         }
 
         public void playerHasBeenAdded(String name, int size) {
             System.out.println(name + " was added");
             System.out.println("They are player number " + size);
         }
+        
+        // TODO name is first, use PlayerUI?
+
+        public void beginTurn(String name, int eyesOfDice) {
+            System.out.println(name + " is the current player"); 
+            System.out.println("They have rolled a " + eyesOfDice);
+        }
+        
+        public void moreMoney(String name, int purse) {
+            System.out.println(name + " now has " + purse + " Gold Coins.");
+        }
+
+        public void advanceToNewPlace(String name, int place) {
+            System.out.println(name + "'s new location is " + place);
+        }
+
+        public void goIntoPenaltyBox(String name) {
+            System.out.println(name + " was sent to the penalty box");
+        }
+
+        public void gettingOutOfPenaltyBox(String name) {
+            maybeGettingOutOfPenaltyBox(name, "");
+        }
+        
+        public void notGettingOutOfPenaltyBox(String name) {
+            maybeGettingOutOfPenaltyBox(name, "not ");
+        }
+
+        private void maybeGettingOutOfPenaltyBox(String name, String maybe) {
+            System.out.println(name + " is " + maybe + "getting out of the penalty box");
+        }
 
     }
 
-    final UI show = new UI();
+    final UI showGame = new UI();
 
     public Game(Players currentPlayer, Questions questions) {
         this.currentPlayer = currentPlayer;
@@ -93,7 +97,7 @@ public class Game {
 
     private void askQuestion() {
         Category currentCategory = currentPlayer.currentCategory();
-        show.nextQuestion(currentCategory.displayName(), questions.nextFor(currentCategory));
+        showGame.question(currentCategory.displayName(), questions.nextFor(currentCategory));
     }
 
     public boolean correctAnswer() {
@@ -119,7 +123,7 @@ public class Game {
     }
 
     private boolean playerWinsCoin() {
-        show.playerAnsweringCorrect();
+        showGame.correctAnswer();
         currentPlayer.answeredCorrect();
 
         boolean notWinner = currentPlayer.didNotWin();
@@ -129,7 +133,7 @@ public class Game {
     }
 
     public boolean wrongAnswer() {
-        show.playerAnsweringIncorrect();
+        showGame.wrongAnswer();
         currentPlayer.goToPenaltyBox();
 
         return playerDoesNotWinCoin();
