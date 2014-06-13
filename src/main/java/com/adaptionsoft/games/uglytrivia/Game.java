@@ -8,6 +8,11 @@ public class Game {
     // TODO smell: Players class reads better as currentPlayer field.
 
     static class UI {
+        // TODO 1. move UI out 
+        // TODO 2. split UI into GameDisplay and PlayerDisplay (maybe superclass UI with System.out)
+        // TODO 3. provide UI from outside using ctors
+        // TODO create tests for ui, reuse (copy) test that capture (2 or 3)
+        // TODO change test cases that capture to verify interaction
 
         public void question(String category, String question) {
             System.out.println("The category is " + category);
@@ -27,7 +32,7 @@ public class Game {
             System.out.println("They are player number " + size);
         }
         
-        // TODO name is first, use PlayerUI?
+        // name is first, use PlayerUI?
 
         public void beginTurn(String name, int eyesOfDice) {
             System.out.println(name + " is the current player"); 
@@ -139,6 +144,5 @@ public class Game {
         return playerDoesNotWinCoin();
     }
 
-    // TODO restructure methods to be either high or low level so we can see the algorithm
-    // TODO factor out/separate the output, have it in one place only
+    // TODO restructure methods to be either high or low level so we can see the algorithm - maybe done?
 }
