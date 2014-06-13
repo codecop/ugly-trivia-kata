@@ -4,6 +4,7 @@ public class Game {
 
     private final Questions questions;
     private final Players currentPlayer;
+
     // TODO smell: Players class reads better as currentPlayer field.
 
     static class UI {
@@ -17,11 +18,15 @@ public class Game {
             System.out.println("The category is " + category);
             System.out.println(question);
         }
-        
+
+        public void playerAnsweringCorrect() {
+            System.out.println("Answer was correct!!!!");
+        }
+
     }
-    
+
     final UI show = new UI();
-    
+
     public Game(Players currentPlayer, Questions questions) {
         this.currentPlayer = currentPlayer;
         this.questions = questions;
@@ -83,7 +88,7 @@ public class Game {
     }
 
     private boolean playerWinsCoin() {
-        System.out.println("Answer was correct!!!!");
+        show.playerAnsweringCorrect();
         currentPlayer.answeredCorrect();
 
         boolean notWinner = currentPlayer.didNotWin();
