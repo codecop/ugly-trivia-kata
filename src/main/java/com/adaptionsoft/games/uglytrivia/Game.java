@@ -27,6 +27,10 @@ public class Game {
             System.out.println("Question was incorrectly answered");
         }
 
+        public void playersGold(String name, int purse) {
+            System.out.println(name + " now has " + purse + " Gold Coins.");
+        }
+
     }
 
     final UI show = new UI();

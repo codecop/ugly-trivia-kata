@@ -1,8 +1,12 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import com.adaptionsoft.games.uglytrivia.Game.UI;
+
 public class Player {
 
     private static final int NEEDED_COINS_TO_WIN = 6;
+
+    private final UI show;
 
     private final String name;
     private final Place place = new Place();
@@ -12,7 +16,12 @@ public class Player {
     private static boolean gettingOutOfPenaltyBox; // TODO (not in scope) bug: State is global not for each player. Player can never come out of penalty box.
 
     public Player(String name) {
+        this(name, new UI()); // TODO get rid
+    }
+    
+    public Player(String name, UI show) {
         this.name = name;
+        this.show = show;
     }
 
     public String getName() {
@@ -25,7 +34,7 @@ public class Player {
 
     public void answeredCorrect() {
         purse++;
-        System.out.println(name + " now has " + purse + " Gold Coins.");
+        show.playersGold(name, purse);        
     }
 
     public boolean didPlayerNotWin() {
