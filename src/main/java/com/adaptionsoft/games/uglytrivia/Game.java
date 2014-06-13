@@ -41,6 +41,14 @@ public class Game {
             System.out.println(name + " was sent to the penalty box");
         }
 
+        public void playerGettingOutOfBox(String name, boolean gettingOutOfPenaltyBox) {
+            String maybe = "not ";
+            if (gettingOutOfPenaltyBox) {
+                maybe = "";
+            }
+            System.out.println(name + " is " + maybe + "getting out of the penalty box");
+        }
+
     }
 
     final UI show = new UI();

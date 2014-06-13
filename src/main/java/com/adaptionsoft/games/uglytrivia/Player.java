@@ -18,7 +18,7 @@ public class Player {
     public Player(String name) {
         this(name, new UI()); // TODO get rid
     }
-    
+
     public Player(String name, UI show) {
         this.name = name;
         this.show = show;
@@ -34,7 +34,7 @@ public class Player {
 
     public void answeredCorrect() {
         purse++;
-        show.playersGold(name, purse);        
+        show.playersGold(name, purse);
     }
 
     public boolean didPlayerNotWin() {
@@ -62,12 +62,7 @@ public class Player {
 
     public void setGettingOutOfPenaltyBox(boolean gettingOut) {
         gettingOutOfPenaltyBox = gettingOut;
-        String maybe = "not ";
-        if (gettingOutOfPenaltyBox) {
-            maybe = "";
-        }
-
-        System.out.println(name + " is " + maybe + "getting out of the penalty box");
+        show.playerGettingOutOfBox(name, gettingOutOfPenaltyBox);
     }
 
     public boolean isGettingOutOfPenaltyBox() {
