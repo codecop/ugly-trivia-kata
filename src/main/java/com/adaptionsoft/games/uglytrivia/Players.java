@@ -80,4 +80,8 @@ public class Players {
     public void willStayInPenaltyBox() {
         getCurrentPlayer().setGettingOutOfPenaltyBox(false);
     }
+
+    public void play(int eyesOfDice) {
+        getCurrentPlayer().play(eyesOfDice);
+    }
 }

@@ -64,7 +64,7 @@ public class Game {
     }
 
     public void play(int eyesOfDice) {
-        show.currentPlayersTurn(currentPlayer.getName(), eyesOfDice);
+        currentPlayer.play(eyesOfDice);        
 
         if (currentPlayer.isInPenaltyBox()) {
             playWithPenalty(eyesOfDice);

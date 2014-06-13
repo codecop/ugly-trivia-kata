@@ -73,4 +73,8 @@ public class Player {
     public String toString() {
         return name;
     }
+
+    public void play(int eyesOfDice) {
+        show.currentPlayersTurn(name, eyesOfDice);
+    }
 }
