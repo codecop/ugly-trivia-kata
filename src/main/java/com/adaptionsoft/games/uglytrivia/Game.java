@@ -31,6 +31,10 @@ public class Game {
             System.out.println(name + " now has " + purse + " Gold Coins.");
         }
 
+        public void playersLocation(String name, int place) {
+            System.out.println(name + "'s new location is " + place);
+        }
+
     }
 
     final UI show = new UI();

@@ -43,7 +43,7 @@ public class Player {
 
     public void advanceBy(int eyesOfDice) {
         place.advanceCurrentPlayerBy(eyesOfDice);
-        System.out.println(name + "'s new location is " + place.getPlace());
+        show.playersLocation(name, place.getPlace());
     }
 
     public boolean isInPenaltyBox() {
