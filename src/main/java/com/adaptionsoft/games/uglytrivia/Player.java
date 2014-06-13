@@ -51,7 +51,7 @@ public class Player {
     }
 
     public void goToPenaltyBox() {
-        System.out.println(name + " was sent to the penalty box");
+        show.playerInPenaltyBox(name);
         inPenaltyBox = true;
     }
 

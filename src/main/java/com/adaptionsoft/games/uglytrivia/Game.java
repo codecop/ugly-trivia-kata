@@ -27,12 +27,18 @@ public class Game {
             System.out.println("Question was incorrectly answered");
         }
 
+        // TODO name is first, use PlayerUI?
+        
         public void playersGold(String name, int purse) {
             System.out.println(name + " now has " + purse + " Gold Coins.");
         }
 
         public void playersLocation(String name, int place) {
             System.out.println(name + "'s new location is " + place);
+        }
+
+        public void playerInPenaltyBox(String name) {
+            System.out.println(name + " was sent to the penalty box");
         }
 
     }
