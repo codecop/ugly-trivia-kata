@@ -23,6 +23,10 @@ public class Game {
             System.out.println("Answer was correct!!!!");
         }
 
+        public void playerAnsweringIncorrect() {
+            System.out.println("Question was incorrectly answered");
+        }
+
     }
 
     final UI show = new UI();
@@ -98,7 +102,7 @@ public class Game {
     }
 
     public boolean wrongAnswer() {
-        System.out.println("Question was incorrectly answered");
+        show.playerAnsweringIncorrect();
         currentPlayer.goToPenaltyBox();
 
         return playerDoesNotWinCoin();
