@@ -28,7 +28,7 @@ public class Game {
         }
 
         // TODO name is first, use PlayerUI?
-        
+
         public void playersGold(String name, int purse) {
             System.out.println(name + " now has " + purse + " Gold Coins.");
         }
@@ -47,6 +47,11 @@ public class Game {
                 maybe = "";
             }
             System.out.println(name + " is " + maybe + "getting out of the penalty box");
+        }
+
+        public void playerHasBeenAdded(String name, int size) {
+            System.out.println(name + " was added");
+            System.out.println("They are player number " + size);
         }
 
     }

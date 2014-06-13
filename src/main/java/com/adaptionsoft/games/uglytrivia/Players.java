@@ -3,12 +3,23 @@ package com.adaptionsoft.games.uglytrivia;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.adaptionsoft.games.uglytrivia.Game.UI;
+
 public class Players {
     // private static final int MAXIMUM_NUMBER_PLAYERS = 6;
 
     private List<Player> players = new ArrayList<Player>();
     private int currentPlayer;
+    private UI show;
 
+    public Players() {
+        this(new UI());
+    }
+    
+    public Players(UI show) {
+        this.show = show;    
+    }
+    
     public void add(String playerName) {
         add(new Player(playerName));
     }
@@ -16,8 +27,7 @@ public class Players {
     public void add(Player player) {
         // TODO (not in scope) missing check: No check for MAXIMUM_NUMBER_PLAYERS
         players.add(player);
-        System.out.println(player.getName() + " was added");
-        System.out.println("They are player number " + players.size());
+        show.playerHasBeenAdded(player.getName(), players.size());
     }
 
     private Player getCurrentPlayer() {
