@@ -12,6 +12,11 @@ public class Game {
             System.out.println(name + " is the current player");
             System.out.println("They have rolled a " + eyesOfDice);
         }
+
+        public void nextQuestion(String category, String question) {
+            System.out.println("The category is " + category);
+            System.out.println(question);
+        }
         
     }
     
@@ -52,8 +57,7 @@ public class Game {
 
     private void askQuestion() {
         Category currentCategory = currentPlayer.currentCategory();
-        System.out.println("The category is " + currentCategory.displayName());
-        System.out.println(questions.nextFor(currentCategory));
+        show.nextQuestion(currentCategory.displayName(), questions.nextFor(currentCategory));
     }
 
     public boolean correctAnswer() {
