@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class GameRunner {
 
-    private static boolean notAWinner;
+    private static boolean notAWinner; // TODO IDEA says can be converted to local variable
 
     public static void main(String[] args) {
         Random rand = new Random();

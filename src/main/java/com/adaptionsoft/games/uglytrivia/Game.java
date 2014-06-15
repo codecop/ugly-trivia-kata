@@ -10,7 +10,7 @@ public class Game {
     static class UI {
         // TODO 1. move UI out 
         // TODO 2. split UI into GameDisplay and PlayerDisplay (maybe superclass UI with System.out)
-        // TODO 3. provide UI from outside using ctors
+        // TODO 3. provide UI from outside using constructors
         // TODO create tests for ui, reuse (copy) test that capture (2 or 3)
         // TODO change test cases that capture to verify interaction
 
