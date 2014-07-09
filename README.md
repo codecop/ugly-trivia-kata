@@ -1,9 +1,7 @@
 ugly-trivia-kata
 ================
 
-A Remote Pair Programming session with
+Remote pair-programming code kata by Thomas Sundberg and Peter Kofler: working on [Ugly Trivia code base from J.B. Rainsberger](https://github.com/jbrains/trivia).
 
-Thomas Sundberg
-Peter Kofler
-
-working on the Ugly Trivia code base from JB Rainsberger.
+### License ###
+[New BSD License](http://opensource.org/licenses/bsd-license.php), see `license.txt` in repository.
