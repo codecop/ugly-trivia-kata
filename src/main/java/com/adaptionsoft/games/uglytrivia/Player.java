@@ -1,7 +1,5 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import com.adaptionsoft.games.uglytrivia.Game.UI;
-
 public class Player {
 
     private static final int NEEDED_COINS_TO_WIN = 6;

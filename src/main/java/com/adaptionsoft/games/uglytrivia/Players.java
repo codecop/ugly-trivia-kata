@@ -8,10 +8,10 @@ public class Players {
     // private static final int MAXIMUM_NUMBER_PLAYERS = 6;
 
     private final List<Player> players = new ArrayList<Player>();
-    private Game.UI show;
+    private UI show;
 
     public Players() {
-        this.show = new Game.UI();
+        this.show = new UI();
     }
 
     public void add(String playerName) {
