@@ -3,9 +3,9 @@ package com.adaptionsoft.games.uglytrivia;
 public class Game {
 
     private final Questions questions;
-    private final Players currentPlayer;
+    private final CurrentPlayer currentPlayer;
 
-    // TODO smell: Players class reads better as currentPlayer field.
+    // TODO smell: CurrentPlayer class reads better as CurrentPlayer class?
 
     static class UI {
         // TODO 1. move UI out 
@@ -67,7 +67,7 @@ public class Game {
 
     final UI showGame = new UI();
 
-    public Game(Players currentPlayer, Questions questions) {
+    public Game(CurrentPlayer currentPlayer, Questions questions) {
         this.currentPlayer = currentPlayer;
         this.questions = questions;
     }

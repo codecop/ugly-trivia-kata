@@ -3,17 +3,17 @@ package com.adaptionsoft.games.uglytrivia;
 public class GameBuilder {
 
     public static Game createGameWithSinglePlayer(Player player) {
-        Players players = new Players();
-        players.add(player);
+        CurrentPlayer currentPlayer = new CurrentPlayer();
+        currentPlayer.add(player);
 
-        return createGameWith(players);
+        return createGameWith(currentPlayer);
     }
 
-    public static Game createGameWith(Players players) {
-        return createGameWith(players, null);
+    public static Game createGameWith(CurrentPlayer currentPlayer) {
+        return createGameWith(currentPlayer, null);
     }
 
-    public static Game createGameWith(Players players, Questions questions) {
-        return new Game(players, questions);
+    public static Game createGameWith(CurrentPlayer currentPlayer, Questions questions) {
+        return new Game(currentPlayer, questions);
     }
 }

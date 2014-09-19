@@ -9,13 +9,13 @@ import static org.mockito.Mockito.*;
 
 public class GamePlayTest {
 
-    private Players players = mock(Players.class);
+    private CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
     private Questions questions = mock(Questions.class);
-    private Game game = GameBuilder.createGameWith(players, questions);
+    private Game game = GameBuilder.createGameWith(currentPlayer, questions);
 
     @Before
     public void prepareQuestion() {
-        when(players.currentCategory()).thenReturn(Category.SPORTS);
+        when(currentPlayer.currentCategory()).thenReturn(Category.SPORTS);
     }
     
     @Test
@@ -24,7 +24,7 @@ public class GamePlayTest {
 
         game.play(eyesOfDice);
 
-        verify(players).advanceBy(eyesOfDice);
+        verify(currentPlayer).advanceBy(eyesOfDice);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class GamePlayTest {
 
     @Test
     public void playerShouldBeAskedQuestionBelongingToCategoryOfPlace() {
-        when(players.currentCategory()).thenReturn(Category.POP);
+        when(currentPlayer.currentCategory()).thenReturn(Category.POP);
         int anyEye = 7;
 
         game.play(anyEye);

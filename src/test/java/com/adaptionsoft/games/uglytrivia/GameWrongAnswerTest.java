@@ -30,12 +30,12 @@ public class GameWrongAnswerTest {
 
     @Test
     public void wrongAnswerShouldEndTurn() {
-        Players players = mock(Players.class);
-        Game game = GameBuilder.createGameWith(players);
+        CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
+        Game game = GameBuilder.createGameWith(currentPlayer);
 
         game.wrongAnswer();
 
-        verify(players).nextPlayer();
+        verify(currentPlayer).nextPlayer();
     }
 
     @Test
@@ -43,8 +43,8 @@ public class GameWrongAnswerTest {
         new SystemOutCapture() {
             {
 
-                Players players = mock(Players.class);
-                Game game = GameBuilder.createGameWith(players);
+                CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
+                Game game = GameBuilder.createGameWith(currentPlayer);
 
                 game.wrongAnswer();
 
@@ -56,8 +56,8 @@ public class GameWrongAnswerTest {
 
     @Test
     public void wrongAnswerShouldNeverWinGame() {
-        Players players = mock(Players.class);
-        Game game = GameBuilder.createGameWith(players);
+        CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
+        Game game = GameBuilder.createGameWith(currentPlayer);
 
         assertFalse("Wrong answer should never win game", !game.wrongAnswer());
     }

@@ -22,12 +22,12 @@ public class GameCorrectAnswerTest {
 
     @Test
     public void correctAnswerShouldEndTurn() {
-        Players players = mock(Players.class);
-        Game game = GameBuilder.createGameWith(players);
+        CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
+        Game game = GameBuilder.createGameWith(currentPlayer);
 
         game.correctAnswer();
 
-        verify(players).nextPlayer();
+        verify(currentPlayer).nextPlayer();
     }
 
     @Test
@@ -83,8 +83,8 @@ public class GameCorrectAnswerTest {
         new SystemOutCapture() {
             {
 
-                Players players = mock(Players.class);
-                Game game = GameBuilder.createGameWith(players);
+                CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
+                Game game = GameBuilder.createGameWith(currentPlayer);
 
                 game.correctAnswer();
 

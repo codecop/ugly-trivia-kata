@@ -8,18 +8,18 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
 public class GamePenaltyTest {
-    private Players players = mock(Players.class);
+    private CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
     private Questions questions = mock(Questions.class);
-    private Game game = GameBuilder.createGameWith(players, questions);
+    private Game game = GameBuilder.createGameWith(currentPlayer, questions);
 
     @Before
     public void prepareQuestion() {
-        when(players.currentCategory()).thenReturn(Category.SPORTS);
+        when(currentPlayer.currentCategory()).thenReturn(Category.SPORTS);
     }
 
     @Before
     public void putPlayerIntoPenaltyBox() {
-        when(players.isInPenaltyBox()).thenReturn(true);
+        when(currentPlayer.isInPenaltyBox()).thenReturn(true);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class GamePenaltyTest {
 
         game.play(oddEyesOfDice);
 
-        verify(players).willGetOutOfPenaltyBox();
+        verify(currentPlayer).willGetOutOfPenaltyBox();
     }
 
     @Test
@@ -37,7 +37,7 @@ public class GamePenaltyTest {
 
         game.play(oddEyesOfDice);
 
-        verify(players).advanceBy(oddEyesOfDice);
+        verify(currentPlayer).advanceBy(oddEyesOfDice);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class GamePenaltyTest {
 
         game.play(evenEyesOfDice);
 
-        verify(players).willStayInPenaltyBox();
+        verify(currentPlayer).willStayInPenaltyBox();
     }
 
     @Test
@@ -69,15 +69,15 @@ public class GamePenaltyTest {
 
         game.play(evenEyesOfDice);
 
-        verify(players, never()).advanceBy(any(Integer.class));
+        verify(currentPlayer, never()).advanceBy(any(Integer.class));
     }
 
     @Test
     public void playerInPenaltyBoxShouldWinCoinOnCorrectAnswer(){
-        when(players.isGettingOutOfPenaltyBox()).thenReturn(true);
+        when(currentPlayer.isGettingOutOfPenaltyBox()).thenReturn(true);
 
         game.correctAnswer();
 
-        verify(players, times(1)).answeredCorrect();
+        verify(currentPlayer, times(1)).answeredCorrect();
     }
 }

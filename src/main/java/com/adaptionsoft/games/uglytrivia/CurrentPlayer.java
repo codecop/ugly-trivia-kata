@@ -5,18 +5,18 @@ import java.util.List;
 
 import com.adaptionsoft.games.uglytrivia.Game.UI;
 
-public class Players {
+public class CurrentPlayer {
     // private static final int MAXIMUM_NUMBER_PLAYERS = 6;
 
     private List<Player> players = new ArrayList<Player>();
     private int currentPlayer;
     private UI show;
 
-    public Players() {
+    public CurrentPlayer() {
         this(new UI());
     }
     
-    public Players(UI show) {
+    public CurrentPlayer(UI show) {
         this.show = show;    
     }
     
