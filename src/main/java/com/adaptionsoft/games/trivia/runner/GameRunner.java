@@ -8,8 +8,6 @@ import java.util.Random;
 
 public class GameRunner {
 
-    private static boolean notAWinner; // TODO IDEA says can be converted to local variable
-
     public static void main(String[] args) {
         Random rand = new Random();
         play(rand);
@@ -26,6 +24,7 @@ public class GameRunner {
 
         Game aGame = new Game(players, questions);
 
+        boolean notAWinner;
         do {
 
             aGame.play(rand.nextInt(5) + 1);
