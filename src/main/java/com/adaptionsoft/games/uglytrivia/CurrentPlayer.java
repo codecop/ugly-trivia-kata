@@ -2,15 +2,11 @@ package com.adaptionsoft.games.uglytrivia;
 
 public class CurrentPlayer {
 
-    private Players players = new Players();
+    private final Players players;
     private int currentPlayer;
 
-    public void add(String playerName) {
-        add(new Player(playerName));
-    }
-
-    public void add(Player player) {
-        players.add(player);
+    public CurrentPlayer(Players players) {
+        this.players = players;
     }
 
     private Player getCurrentPlayer() {

@@ -5,8 +5,6 @@ public class Game {
     private final Questions questions;
     private final CurrentPlayer currentPlayer;
 
-    // TODO smell: CurrentPlayer class reads better as CurrentPlayer class?
-
     static class UI {
         // TODO 1. move UI out 
         // TODO 2. split UI into GameDisplay and PlayerDisplay (maybe superclass UI with System.out)

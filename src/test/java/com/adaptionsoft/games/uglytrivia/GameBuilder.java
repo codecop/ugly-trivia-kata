@@ -3,10 +3,13 @@ package com.adaptionsoft.games.uglytrivia;
 public class GameBuilder {
 
     public static Game createGameWithSinglePlayer(Player player) {
-        CurrentPlayer currentPlayer = new CurrentPlayer();
-        currentPlayer.add(player);
+        Players players = new Players();
+        players.add(player);
+        return createGameWith(players);
+    }
 
-        return createGameWith(currentPlayer);
+    private static Game createGameWith(Players players) {
+        return createGameWith(new CurrentPlayer(players));
     }
 
     public static Game createGameWith(CurrentPlayer currentPlayer) {
