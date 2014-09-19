@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
-    private Player player = new Player("Erik");
+    private Player player = TestPlayer.named("Erik");
 
     @Test
     public void newPlayerShouldNotWin() {
@@ -39,6 +39,8 @@ public class PlayerTest {
 
     @Test
     public void shouldPrintACorrectAnswerMessageWhenScoring() {
+        player = new Player("Erik", new PlayerUI());
+        // TODO change from using the real UI to using the stubbedUI, mock in this case
         new SystemOutCapture() {
             {
 

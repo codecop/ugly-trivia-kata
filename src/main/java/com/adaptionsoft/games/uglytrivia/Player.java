@@ -13,10 +13,6 @@ public class Player {
     private boolean inPenaltyBox;
     private static boolean gettingOutOfPenaltyBox; // TODO (not in scope) bug: State is global not for each player. Player can never come out of penalty box.
 
-    public Player(String name) {
-        this(name, new PlayerUI()); // TODO get rid
-    }
-
     public Player(String name, PlayerUI show) {
         this.name = name;
         this.showPlayer = show;

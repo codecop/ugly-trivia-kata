@@ -10,7 +10,7 @@ public class GameWrongAnswerTest {
 
     @Test
     public void wrongAnswerShouldSendPlayerToPenaltyBox() {
-        Player lonelyTom = new Player("Lonely Tom");
+        Player lonelyTom = TestPlayer.named("Lonely Tom");
         Game game = GameBuilder.createGameWithSinglePlayer(lonelyTom);
 
         game.wrongAnswer();
