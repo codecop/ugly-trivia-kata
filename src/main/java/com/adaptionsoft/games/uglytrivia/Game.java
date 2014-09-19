@@ -5,7 +5,7 @@ public class Game {
     private final Questions questions;
     private final CurrentPlayer currentPlayer;
 
-    final UI showGame = new UI();
+    private final GameUI showGame = new GameUI();
 
     public Game(CurrentPlayer currentPlayer, Questions questions) {
         this.currentPlayer = currentPlayer;
