@@ -35,4 +35,8 @@ public class PlayerUI {
         print(name + " is " + maybe + "getting out of the penalty box");
     }
 
+    public void hasBeenAdded(String name, int size) {
+        print(name + " was added");
+        print("They are player number " + size);
+    }
 }

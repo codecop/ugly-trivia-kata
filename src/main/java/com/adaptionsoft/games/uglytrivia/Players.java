@@ -8,20 +8,16 @@ public class Players {
     // private static final int MAXIMUM_NUMBER_PLAYERS = 6;
 
     private final List<Player> players = new ArrayList<Player>();
-    private GameUI show;
-
-    public Players() {
-        this.show = new GameUI();
-    }
+    private PlayerUI showPlayer = new PlayerUI();
 
     public void add(String playerName) {
-        add(new Player(playerName));
+        add(new Player(playerName, showPlayer));
     }
 
     public void add(Player player) {
         // TODO (not in scope) missing check: No check for MAXIMUM_NUMBER_PLAYERS
         players.add(player);
-        show.playerHasBeenAdded(player.getName(), players.size());
+        showPlayer.hasBeenAdded(player.getName(), players.size());
     }
 
     public Player get(int currentPlayer) {

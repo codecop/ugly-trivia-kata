@@ -22,9 +22,4 @@ public class GameUI {
         print("Question was incorrectly answered");
     }
 
-    public void playerHasBeenAdded(String name, int size) {
-        print(name + " was added");
-        print("They are player number " + size);
-    }
-
 }
