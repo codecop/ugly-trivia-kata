@@ -40,7 +40,7 @@ public class PlayerTest {
     @Test
     public void shouldPrintACorrectAnswerMessageWhenScoring() {
         player = new Player("Erik", new PlayerUI());
-        // TODO change from using the real UI to using the stubbedUI, mock in this case
+        // TODO 3. (part 2) change from using the real UI to using the stubbedUI, mock in this case
         new SystemOutCapture() {
             {
 
