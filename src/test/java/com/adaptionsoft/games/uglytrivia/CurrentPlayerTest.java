@@ -9,8 +9,8 @@ import static org.mockito.Mockito.mock;
 
 public class CurrentPlayerTest {
 
-    public static final String PLAYER_ONE = "Thomas";
-    public static final String PLAYER_TWO = "Peter";
+    private static final String PLAYER_ONE = "Thomas";
+    private static final String PLAYER_TWO = "Peter";
 
     private CurrentPlayer currentPlayer;
 
