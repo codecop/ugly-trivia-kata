@@ -1,6 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
-public class PlayerUI {
+public class PlayerUi {
 
     private void print(String msg) {
         System.out.println(msg);

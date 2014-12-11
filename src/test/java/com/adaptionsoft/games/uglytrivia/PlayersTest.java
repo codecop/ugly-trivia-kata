@@ -15,7 +15,7 @@ public class PlayersTest {
     public static final String ANY_PLAYER = "Erik";
 
     // TODO minor duplication in all Player tests for creating the Players instance.
-    private PlayerUI ui = mock(PlayerUI.class);
+    private PlayerUi ui = mock(PlayerUi.class);
     private Players players = new Players(ui);
 
     @Before

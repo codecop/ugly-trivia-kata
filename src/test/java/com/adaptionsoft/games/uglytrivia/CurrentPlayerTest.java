@@ -16,7 +16,7 @@ public class CurrentPlayerTest {
 
     @Before
     public void addPlayers() {
-        PlayerUI ui = mock(PlayerUI.class);
+        PlayerUi ui = mock(PlayerUi.class);
         Players players = new Players(ui);
         players.add(PLAYER_ONE);
         players.add(PLAYER_TWO);

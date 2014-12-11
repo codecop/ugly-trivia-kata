@@ -5,7 +5,7 @@ import static org.mockito.Mockito.mock;
 public class GameBuilder {
 
     public static Game createGameWithSinglePlayer(Player player) {
-        PlayerUI ui = mock(PlayerUI.class);
+        PlayerUi ui = mock(PlayerUi.class);
         Players players = new Players(ui);
         players.add(player);
         return createGameWith(players);

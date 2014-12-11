@@ -12,8 +12,8 @@ public class GameRunner {
     }
 
     public static void play(Random rand) {
-        PlayerUI playerUI = new PlayerUI();
-        Players players = new Players(playerUI);
+        PlayerUi playerUi = new PlayerUi();
+        Players players = new Players(playerUi);
         players.add("Chet");
         players.add("Pat");
         players.add("Sue");

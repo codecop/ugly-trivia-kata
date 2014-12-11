@@ -4,11 +4,11 @@ import static org.mockito.Mockito.mock;
 
 public class TestPlayer {
     private static String lastUsedName;
-    private static PlayerUI lastUsedStubbedUi;
+    private static PlayerUi lastUsedStubbedUi;
 
     public static Player named(String name) {
         lastUsedName = name;
-        lastUsedStubbedUi = mock(PlayerUI.class);
+        lastUsedStubbedUi = mock(PlayerUi.class);
 
         return new Player(name, lastUsedStubbedUi);
     }
@@ -17,7 +17,7 @@ public class TestPlayer {
         return lastUsedName;
     }
 
-    public static PlayerUI mockedUi() {
+    public static PlayerUi mockedUi() {
         return lastUsedStubbedUi;
     }
 }

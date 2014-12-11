@@ -39,7 +39,7 @@ public class PlayerTest {
     public void shouldVerifyCorrectAnswerMessageWhenScoring() {
         player.answeredCorrect();
 
-        PlayerUI ui = TestPlayer.mockedUi();
+        PlayerUi ui = TestPlayer.mockedUi();
         String name = TestPlayer.name();
         int purseAfterOneCorrectAnswer = 1;
         verify(ui).moreMoney(name, purseAfterOneCorrectAnswer);

@@ -4,7 +4,7 @@ public class Player {
 
     private static final int NEEDED_COINS_TO_WIN = 6;
 
-    private final PlayerUI showPlayer;
+    private final PlayerUi showPlayer;
 
     private final String name;
     private final Place place = new Place();
@@ -13,7 +13,7 @@ public class Player {
     private boolean inPenaltyBox;
     private static boolean gettingOutOfPenaltyBox; // TODO (not in scope) bug: State is global not for each player. Player can never come out of penalty box.
 
-    public Player(String name, PlayerUI show) {
+    public Player(String name, PlayerUi show) {
         this.name = name;
         this.showPlayer = show;
     }

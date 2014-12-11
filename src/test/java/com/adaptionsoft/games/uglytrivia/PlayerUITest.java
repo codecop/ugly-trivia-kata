@@ -5,11 +5,11 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class PlayerUITest {
+public class PlayerUiTest {
 
     @Test
     public void shouldPrintACorrectAnswerMessageWhenScoring() {
-        final PlayerUI playerUi = new PlayerUI();
+        final PlayerUi playerUi = new PlayerUi();
         new SystemOutCapture() {
             {
 

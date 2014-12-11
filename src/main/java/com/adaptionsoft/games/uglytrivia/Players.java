@@ -7,11 +7,11 @@ public class Players {
 
     // private static final int MAXIMUM_NUMBER_PLAYERS = 6;
 
-    private final PlayerUI showPlayer;
+    private final PlayerUi showPlayer;
     private final List<Player> players = new ArrayList<Player>();
 
-    public Players(PlayerUI playerUI) {
-        this.showPlayer = playerUI;
+    public Players(PlayerUi playerUi) {
+        this.showPlayer = playerUi;
     }
 
     public void add(String playerName) {
