@@ -1,9 +1,12 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import static org.mockito.Mockito.mock;
+
 public class GameBuilder {
 
     public static Game createGameWithSinglePlayer(Player player) {
-        Players players = new Players();
+        PlayerUI ui = mock(PlayerUI.class);
+        Players players = new Players(ui);
         players.add(player);
         return createGameWith(players);
     }

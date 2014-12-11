@@ -1,9 +1,6 @@
 package com.adaptionsoft.games.trivia.runner;
 
-import com.adaptionsoft.games.uglytrivia.CurrentPlayer;
-import com.adaptionsoft.games.uglytrivia.Game;
-import com.adaptionsoft.games.uglytrivia.Players;
-import com.adaptionsoft.games.uglytrivia.Questions;
+import com.adaptionsoft.games.uglytrivia.*;
 
 import java.util.Random;
 
@@ -15,8 +12,8 @@ public class GameRunner {
     }
 
     public static void play(Random rand) {
-
-        Players players = new Players();
+        PlayerUI playerUI = new PlayerUI();
+        Players players = new Players(playerUI);
         players.add("Chet");
         players.add("Pat");
         players.add("Sue");

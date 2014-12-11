@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.mock;
 
 public class PlayersTest {
 
@@ -13,7 +14,8 @@ public class PlayersTest {
     public static final String PLAYER_TWO = "Peter";
     public static final String ANY_PLAYER = "Erik";
 
-    private Players players = new Players();
+    private PlayerUI ui = mock(PlayerUI.class);
+    private Players players = new Players(ui);
 
     @Before
     public void addPlayers() {

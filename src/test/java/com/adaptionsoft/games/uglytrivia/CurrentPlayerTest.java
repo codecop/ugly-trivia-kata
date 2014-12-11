@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.mock;
 
 public class CurrentPlayerTest {
 
@@ -15,7 +16,8 @@ public class CurrentPlayerTest {
 
     @Before
     public void addPlayers() {
-        Players players = new Players();
+        PlayerUI ui = mock(PlayerUI.class);
+        Players players = new Players(ui);
         players.add(PLAYER_ONE);
         players.add(PLAYER_TWO);
         currentPlayer = new CurrentPlayer(players);
