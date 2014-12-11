@@ -5,9 +5,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class PlayerTest {
     private Player player = TestPlayer.named("Erik");
@@ -38,9 +38,21 @@ public class PlayerTest {
     }
 
     @Test
+    public void shouldVerifyCorrectAnswerMessageWhenScoring() {
+        String name = "Erik";
+        PlayerUI ui = mock(PlayerUI.class);
+        player = new Player(name, ui);
+
+        player.answeredCorrect();
+
+        int purseAfterOneCorrectAnswer = 1;
+        verify(ui).moreMoney(name, purseAfterOneCorrectAnswer);
+    }
+
+    @Test
     public void shouldPrintACorrectAnswerMessageWhenScoring() {
         player = new Player("Erik", new PlayerUI());
-        // TODO 3. (part 2) change from using the real UI to using the stubbedUI, mock in this case
+        // TODO Move to GameUITest
         new SystemOutCapture() {
             {
 
