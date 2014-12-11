@@ -10,9 +10,9 @@ import static org.mockito.Mockito.mock;
 
 public class PlayersTest {
 
-    public static final String PLAYER_ONE = "Thomas";
-    public static final String PLAYER_TWO = "Peter";
-    public static final String ANY_PLAYER = "Erik";
+    private static final String PLAYER_ONE = "Thomas";
+    private static final String PLAYER_TWO = "Peter";
+    private static final String ANY_PLAYER = "Erik";
 
     // TODO minor duplication in all Player tests for creating the Players instance.
     private PlayerUi ui = mock(PlayerUi.class);
