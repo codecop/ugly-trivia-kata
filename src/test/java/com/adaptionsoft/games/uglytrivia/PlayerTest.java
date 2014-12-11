@@ -1,12 +1,10 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class PlayerTest {
@@ -39,29 +37,12 @@ public class PlayerTest {
 
     @Test
     public void shouldVerifyCorrectAnswerMessageWhenScoring() {
-        String name = "Erik";
-        PlayerUI ui = mock(PlayerUI.class);
-        player = new Player(name, ui);
-
         player.answeredCorrect();
 
+        PlayerUI ui = TestPlayer.mockedUi();
+        String name = TestPlayer.name();
         int purseAfterOneCorrectAnswer = 1;
         verify(ui).moreMoney(name, purseAfterOneCorrectAnswer);
-    }
-
-    @Test
-    public void shouldPrintACorrectAnswerMessageWhenScoring() {
-        player = new Player("Erik", new PlayerUI());
-        // TODO Move to GameUITest
-        new SystemOutCapture() {
-            {
-
-                player.answeredCorrect();
-
-                Assert.assertThat(capturedSystemOut(), is("Erik now has 1 Gold Coins." + cr()));
-
-            }
-        }.resetSystemOut();
     }
 
     @Test
