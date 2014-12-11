@@ -22,8 +22,8 @@ public class GameRunner {
 
         Questions questions = new Questions();
 
-        GameUI gameUI = new GameUI();
-        Game aGame = new Game(currentPlayer, questions, gameUI);
+        GameUi gameUi = new GameUi();
+        Game aGame = new Game(currentPlayer, questions, gameUi);
 
         boolean notAWinner;
         do {

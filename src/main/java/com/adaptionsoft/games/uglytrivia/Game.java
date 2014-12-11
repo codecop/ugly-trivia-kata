@@ -4,9 +4,9 @@ public class Game {
 
     private final Questions questions;
     private final CurrentPlayer currentPlayer;
-    private final GameUI showGame;
+    private final GameUi showGame;
 
-    public Game(CurrentPlayer currentPlayer, Questions questions, GameUI showGame) {
+    public Game(CurrentPlayer currentPlayer, Questions questions, GameUi showGame) {
         this.currentPlayer = currentPlayer;
         this.questions = questions;
         this.showGame = showGame;
