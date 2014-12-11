@@ -20,6 +20,7 @@ public class GameBuilder {
     }
 
     public static Game createGameWith(CurrentPlayer currentPlayer, Questions questions) {
-        return new Game(currentPlayer, questions);
+        GameUI ui = new GameUI();
+        return new Game(currentPlayer, questions, ui);
     }
 }

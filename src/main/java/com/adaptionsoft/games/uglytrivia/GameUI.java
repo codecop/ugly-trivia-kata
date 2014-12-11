@@ -1,7 +1,6 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class GameUI {
-    // TODO 1. provide both UIs from outside using constructors, so it is created in Game Runner
     // TODO 2. add tests for UI/update capturing tests, reuse (copy) test that capture (2 or 3)
     // TODO 3. change test cases that capture to verify interaction
     // TODO 4. common UI that does the low level UI stuff like print, alert sound etc.
