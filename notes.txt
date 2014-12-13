@@ -1,0 +1,15 @@
+Retro 11.12.20141 #11
+
+* long time no session
+* once a month should be good
+* when all TODOs are done we should have a prio list for next time (or red test)
+  (but when refactoring we usually do not have red tests)
+
+Ideas what to do next:
+* fix TODOs
+* look at coverage, look at PIT coverage - can we improve tests
+* use Texttest as another experiment Golden Master experimentn 
+  (as branch from the original code and then move forward and see if we broke stuff)
+  similar to branch "exercise-golden-master" - see where it starts and create a similar one up front, then merge into head when it is finished
+
+---
