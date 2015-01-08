@@ -83,6 +83,16 @@ public class GameCorrectAnswerTest {
     }
 
     @Test
+    public void correctAnswerShouldNotifyWinMessage() {
+        CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
+        Game game = GameBuilder.createMockedGameWith(currentPlayer);
+
+        game.correctAnswer();
+
+        verify(GameBuilder.mockedUi()).correctAnswer();
+    }
+
+    @Test
     public void correctAnswerShouldPrintAWinMessage() {
         new SystemOutCapture() {
             {
