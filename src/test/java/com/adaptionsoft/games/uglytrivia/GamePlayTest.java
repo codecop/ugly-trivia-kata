@@ -3,24 +3,20 @@ package com.adaptionsoft.games.uglytrivia;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class GamePlayTest {
 
     private CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
     private Questions questions = mock(Questions.class);
-    private Game game = GameBuilder.createGameWith(currentPlayer, questions);
+    private Game game = GameBuilder.createMockedGameWith(currentPlayer, questions);
 
     @Before
     public void prepareQuestion() {
         when(currentPlayer.currentCategory()).thenReturn(Category.SPORTS);
     }
-    
+
     @Test
     public void playerShouldAdvanceByEyesOfDice() {
         int eyesOfDice = 3;
@@ -32,16 +28,15 @@ public class GamePlayTest {
 
     @Test
     public void playerShouldBeAskedQuestion() {
-        new SystemOutCapture() {
-            {
-                when(questions.nextFor(any(Category.class))).thenReturn("Pop Question 1");
-                int anyEye = 0;
+        Category anyCategory = Category.SPORTS;
+        String nextQuestion = "Sport Question 1";
+        when(currentPlayer.currentCategory()).thenReturn(anyCategory);
+        when(questions.nextFor(any(Category.class))).thenReturn(nextQuestion);
+        int anyEye = 0;
 
-                game.play(anyEye);
+        game.play(anyEye);
 
-                assertThat(capturedSystemOutLines(), hasItems("Pop Question 1"));
-            }
-        }.resetSystemOut();
+        verify(GameBuilder.mockedUi()).question(anyCategory.displayName(), nextQuestion);
     }
 
     @Test

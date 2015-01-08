@@ -24,7 +24,7 @@ public class GameBuilder {
         return createMockedGameWith(currentPlayer, null);
     }
 
-    private static Game createMockedGameWith(CurrentPlayer currentPlayer, Questions questions) {
+    public static Game createMockedGameWith(CurrentPlayer currentPlayer, Questions questions) {
         GameUi ui = mock(GameUi.class);
         lastUsedStubbedUi = ui;
         return createGameWith(currentPlayer, questions, ui);

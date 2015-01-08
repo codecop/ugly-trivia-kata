@@ -4,17 +4,18 @@ import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class GameUiTest {
 
+    private GameUi gameUi = new GameUi();
+
     @Test
     public void correctAnswerShouldPrintAWinMessage() {
         new SystemOutCapture() {
             {
-
-                GameUi gameUi = new GameUi();
 
                 gameUi.correctAnswer();
 
@@ -29,8 +30,6 @@ public class GameUiTest {
         new SystemOutCapture() {
             {
 
-                GameUi gameUi = new GameUi();
-
                 gameUi.wrongAnswer();
 
                 assertThat(capturedSystemOut(), Is.is("Question was incorrectly answered" + cr()));
@@ -38,4 +37,19 @@ public class GameUiTest {
             }
         }.resetSystemOut();
     }
+
+
+    @Test
+    public void shouldPrintQuestion() {
+        new SystemOutCapture() {
+            {
+
+                gameUi.question("anything", "Pop Question 2");
+
+                assertThat(capturedSystemOutLines(), hasItems("Pop Question 2"));
+
+            }
+        }.resetSystemOut();
+    }
+
 }
