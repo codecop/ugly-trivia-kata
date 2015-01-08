@@ -1,16 +1,11 @@
 package com.adaptionsoft.games.uglytrivia;
 
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class GameCorrectAnswerTest {
 
@@ -91,21 +86,4 @@ public class GameCorrectAnswerTest {
 
         verify(GameBuilder.mockedUi()).correctAnswer();
     }
-
-    @Test
-    public void correctAnswerShouldPrintAWinMessage() {
-        new SystemOutCapture() {
-            {
-
-                CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
-                Game game = GameBuilder.createGameWith(currentPlayer);
-
-                game.correctAnswer();
-
-                Assert.assertThat(capturedSystemOut(), is("Answer was correct!!!!" + cr()));
-
-            }
-        }.resetSystemOut();
-    }
-
 }
