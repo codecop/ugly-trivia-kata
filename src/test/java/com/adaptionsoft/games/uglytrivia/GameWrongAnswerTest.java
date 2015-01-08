@@ -2,13 +2,9 @@ package com.adaptionsoft.games.uglytrivia;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class GameWrongAnswerTest {
 
@@ -43,19 +39,13 @@ public class GameWrongAnswerTest {
     }
 
     @Test
-    public void wrongAnswerShouldPrintAWrongAnswerMessage() {
-        new SystemOutCapture() {
-            {
+    public void wrongAnswerShouldNotifyWrongAnswer() {
+        CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
+        Game game = GameBuilder.createMockedGameWith(currentPlayer);
 
-                CurrentPlayer currentPlayer = mock(CurrentPlayer.class);
-                Game game = GameBuilder.createGameWith(currentPlayer);
+        game.wrongAnswer();
 
-                game.wrongAnswer();
-
-                assertThat(capturedSystemOut(), is("Question was incorrectly answered" + cr()));
-
-            }
-        }.resetSystemOut();
+        verify(GameBuilder.mockedUi()).wrongAnswer();
     }
 
     @Test
