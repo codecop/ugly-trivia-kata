@@ -46,7 +46,7 @@ public class GamePenaltyTest {
     }
 
     @Test
-    // todo last of point 2 and 3, convert to a interaction test and verify that something was printed
+    // TODO (nothing new, skipped) add a direct capture test to Ui test and create interaction test here
     public void playerInPenaltyBoxShouldBeAskedQuestionOnOddDice() {
         new SystemOutCapture() {
             {

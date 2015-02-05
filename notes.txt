@@ -1,4 +1,12 @@
-Retro 08.12.2015 #12
+Rethink: Why did we start this?
+* we brought it sort of under test
+* we experimented with capturing system out
+* we have no idea why we started it
+* we have had a lot of fun
+
+---
+
+Retro 08.01.2015 #12
 
 * we were both tired, but even then we did 2 Pomodoros.
 * hard to stop when you are in the middle of something
@@ -18,7 +26,7 @@ Retro 11.12.2014 #11
 Ideas what to do next:
 * fix TODOs
 * look at coverage, look at PIT coverage - can we improve tests
-* use Texttest as another experiment Golden Master experimentn 
+* use Texttest as another experiment Golden Master experimennt
   (as branch from the original code and then move forward and see if we broke stuff)
   similar to branch "exercise-golden-master" - see where it starts and create a similar one up front, then merge into head when it is finished
 
