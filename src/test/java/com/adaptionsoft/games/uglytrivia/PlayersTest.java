@@ -14,7 +14,7 @@ public class PlayersTest {
     private static final String PLAYER_TWO = "Peter";
     private static final String ANY_PLAYER = "Erik";
 
-    // TODO minor duplication in all Player tests for creating the Players instance.
+    // TODO (nothing new, skipped) minor duplication in all Player tests for creating the Players instance.
     private PlayerUi ui = mock(PlayerUi.class);
     private Players players = new Players(ui);
 
