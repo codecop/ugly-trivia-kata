@@ -1,23 +1,38 @@
-1. have a look through
+Steps of cleaning up a legacy code base
+=======================================
 
-- 1st cleanup
+0tht iteration
+--------------
+1. have a look through
+   add TODOs and list of smells what we see
+
+1st iteration "cleanup"
+-----------------------
 2. fix all warnings/remove dead and commented out code
 3. fix typos
 
-- 2nd cleanup
+2nd iteration "more cleanup"
+----------------------------
 4. extract constants to better understanding, go through and do small things
 5. extract methods to small chunks, name accordingly
 
-- 3rd
-6. extract classes
-7. add tests to classes
-8. cleanup classes
+3rd iteration 
+-------------
+6. extract class
+7. add tests to class
+8. cleanup class
 
-- 4th
-9. repeat steps 6-8
-10. bring remaining Game under test, mock the extracted classes
+4th iteration
+-------------
+9. repeat steps 6-8 for as other many classes
+10. bring remaining Game under test, mock the extracted classes in tests
 
-- 5th
-11. bring output under test
+5th iteration
+-------------
+11. bring output under test with System out capture
 12. extract output into its own classes
-13. bring them under test, mock output in other places
+13. bring output classes under test, mock output in other places
+
+6th iteration
+-------------
+14. restructure main Game ?
