@@ -1,9 +1,10 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class PlayerUi {
+    ConsolePrinter consolePrinter = new ConsolePrinter();
 
     private void print(String msg) {
-        System.out.println(msg);
+        consolePrinter.print(msg);
     }
 
     public void beginTurn(String name, int eyesOfDice) {

@@ -1,10 +1,10 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class GameUi {
-    // TODO 4. common UI that does the low level UI stuff like print, alert sound etc.
+    ConsolePrinter consolePrinter = new ConsolePrinter();
 
     private void print(String msg) {
-        System.out.println(msg);
+        consolePrinter.print(msg);
     }
 
     public void question(String category, String question) {
