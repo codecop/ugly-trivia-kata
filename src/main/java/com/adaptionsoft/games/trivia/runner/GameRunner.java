@@ -5,6 +5,7 @@ import com.adaptionsoft.games.uglytrivia.*;
 import java.util.Random;
 
 public class GameRunner {
+    // TODO (Checkstyle) Class Data Abstraction Coupling is 8 classes [ConsolePrinter, CurrentPlayer, Game, GameUi, PlayerUi, Players, Questions, Random].
 
     public static void main(String[] args) {
         Random rand = new Random();

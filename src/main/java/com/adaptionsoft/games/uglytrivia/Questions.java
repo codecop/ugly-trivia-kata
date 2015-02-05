@@ -23,6 +23,7 @@ public class Questions {
         questionsByCategory.put(category, createFor(category));
     }
 
+    // TODO (Checkstyle) LinkedList is not allowed in signatures, shoult return List only
     private LinkedList<String> createFor(Category category) {
         LinkedList<String> questions = new LinkedList<String>();
         for (int i = 0; i < NUMBER_QUESTIONS; i++) {
