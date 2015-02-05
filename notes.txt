@@ -1,8 +1,20 @@
+Retro 05.02.2015 #13
+
+* Hard to get started, we had a philosophical discussion about why we are doing this exercise
+* we are less enthusiastic than usual, maybe we need sth new
+* could we do this exercise smarter? going other ways, not redoing things and tests.
+  maybe staying with Golden Master gives us freedom to change more.
+* Idea: stay with golden master much longer until API emerges.
+* Maybe the tests are too connected to the implementation.
+  So if not, then Game would be the API and all tests (unit) would go through the API and not be coupled to the implementation.
+* Idea: Create exactly this app TDD or BDD style up front and verify against Golden Master?
+
+
 Rethink: Why did we start this?
-* we brought it sort of under test
+* we brought it sort of under test, we could go further for some classes, but it be more of the same.
 * we experimented with capturing system out
 * we have no idea why we started it
-* we have had a lot of fun
+* we had a lot of fun
 
 ---
 
@@ -26,7 +38,7 @@ Retro 11.12.2014 #11
 Ideas what to do next:
 * fix TODOs
 * look at coverage, look at PIT coverage - can we improve tests
-* use Texttest as another experiment Golden Master experimennt
+* use Texttest as another experiment Golden Master experiment
   (as branch from the original code and then move forward and see if we broke stuff)
   similar to branch "exercise-golden-master" - see where it starts and create a similar one up front, then merge into head when it is finished
 
