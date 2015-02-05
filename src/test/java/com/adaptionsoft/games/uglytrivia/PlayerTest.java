@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 public class PlayerTest {
-    private Player player = TestPlayer.named("Erik");
+    private Player player = PlayerBuilder.named("Erik");
 
     @Test
     public void newPlayerShouldNotWin() {
@@ -39,8 +39,8 @@ public class PlayerTest {
     public void shouldVerifyCorrectAnswerMessageWhenScoring() {
         player.answeredCorrect();
 
-        PlayerUi ui = TestPlayer.mockedUi();
-        String name = TestPlayer.name();
+        PlayerUi ui = PlayerBuilder.mockedUi();
+        String name = PlayerBuilder.name();
         int purseAfterOneCorrectAnswer = 1;
         verify(ui).moreMoney(name, purseAfterOneCorrectAnswer);
     }

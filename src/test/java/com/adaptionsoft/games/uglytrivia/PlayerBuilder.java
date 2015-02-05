@@ -2,8 +2,7 @@ package com.adaptionsoft.games.uglytrivia;
 
 import static org.mockito.Mockito.mock;
 
-// TODO rename to PlayerBuilder, remove ignore from Maven pom
-public class TestPlayer {
+public class PlayerBuilder {
     private static String lastUsedName;
     private static PlayerUi lastUsedStubbedUi;
 

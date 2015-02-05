@@ -58,7 +58,7 @@ public class GameCorrectAnswerTest {
 
     @Test
     public void correctAnswerWithNotEnoughCoinsDoesNotEndGame() {
-        Player player = TestPlayer.named("Unlucky Bill");
+        Player player = PlayerBuilder.named("Unlucky Bill");
         Game game = GameBuilder.createGameWithSinglePlayer(player);
 
         for (int i = 0; i < 5; i++) {
@@ -68,7 +68,7 @@ public class GameCorrectAnswerTest {
 
     @Test
     public void correctAnswerWithEnoughCoinsEndsGame() {
-        Player player = TestPlayer.named("Lucky Luke");
+        Player player = PlayerBuilder.named("Lucky Luke");
         Game game = GameBuilder.createGameWithSinglePlayer(player);
         for (int i = 0; i < 5; i++) {
             game.correctAnswer();

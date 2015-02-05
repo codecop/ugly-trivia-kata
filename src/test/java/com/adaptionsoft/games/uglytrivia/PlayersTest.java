@@ -28,7 +28,7 @@ public class PlayersTest {
     public void shouldAddOnePlayer() {
         assertThat(players.size(), is(2));
 
-        players.add(TestPlayer.named(ANY_PLAYER));
+        players.add(PlayerBuilder.named(ANY_PLAYER));
 
         assertThat(players.size(), is(3));
     }
