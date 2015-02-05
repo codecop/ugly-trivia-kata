@@ -54,7 +54,6 @@ public class Player {
         throw new UnsupportedOperationException("not implemented, known defect, never called");
     }
 
-    // TODO check coverage for potential to add tests
     public void setGettingOutOfPenaltyBox(boolean gettingOut) {
         gettingOutOfPenaltyBox = gettingOut;
         if (gettingOutOfPenaltyBox) {
