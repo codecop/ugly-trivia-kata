@@ -99,7 +99,12 @@ public class Game {
             }
 
         } while (notAWinner);
+        /*
+        TODO NEXT restructure methods to be either high or low level so we can see the algorithm - maybe done?
+        add tests with stubbed random
+        make all called methods private
+        rename all called methods, e.g. play is twice
+         */
     }
 
-    // TODO restructure methods to be either high or low level so we can see the algorithm - maybe done?
 }
