@@ -24,20 +24,9 @@ public class GameRunner {
         Questions questions = new Questions();
 
         GameUi gameUi = new GameUi(consolePrinter);
-        Game aGame = new Game(currentPlayer, questions, gameUi);
 
-        boolean notAWinner;
-        do {
-
-            aGame.play(rand.nextInt(5) + 1);
-
-            if (rand.nextInt(9) == 7) {
-                notAWinner = aGame.wrongAnswer();
-            } else {
-                notAWinner = aGame.correctAnswer();
-            }
-
-        } while (notAWinner);
-        
+        Game game = new Game(currentPlayer, questions, gameUi);
+        game.play(rand);
     }
+
 }

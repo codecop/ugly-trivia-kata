@@ -1,5 +1,7 @@
 package com.adaptionsoft.games.uglytrivia;
 
+import java.util.Random;
+
 public class Game {
 
     private final Questions questions;
@@ -82,6 +84,21 @@ public class Game {
         currentPlayer.goToPenaltyBox();
 
         return playerDoesNotWinCoin();
+    }
+
+    public void play(Random rand) {
+        boolean notAWinner;
+        do {
+
+            play(rand.nextInt(5) + 1);
+
+            if (rand.nextInt(9) == 7) {
+                notAWinner = wrongAnswer();
+            } else {
+                notAWinner = correctAnswer();
+            }
+
+        } while (notAWinner);
     }
 
     // TODO restructure methods to be either high or low level so we can see the algorithm - maybe done?
