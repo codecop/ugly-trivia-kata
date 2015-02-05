@@ -9,7 +9,6 @@ Retro 05.02.2015 #13
   So if not, then Game would be the API and all tests (unit) would go through the API and not be coupled to the implementation.
 * Idea: Create exactly this app TDD or BDD style up front and verify against Golden Master?
 
-
 Rethink: Why did we start this?
 * we brought it sort of under test, we could go further for some classes, but it be more of the same.
 * we experimented with capturing system out
@@ -41,5 +40,23 @@ Ideas what to do next:
 * use Texttest as another experiment Golden Master experiment
   (as branch from the original code and then move forward and see if we broke stuff)
   similar to branch "exercise-golden-master" - see where it starts and create a similar one up front, then merge into head when it is finished
+
+---
+
+Session 19.09.2014 #10
+Session 13.06.2014 #9
+Session 27.03.2014 #8
+Session 06.03.2014 #7
+Session 13.02.2014 #6
+Session 24.01.2014 #5 or 6 ?
+Session 10.01.2014 #5
+Session 03.01.2014 #4
+Session 27.12.2013 #3
+Session 25.06.2013 #2
+
+---
+
+Session 24.05.2013 #1
+* started the session as refactoring exercise after GeeCON 2013.
 
 ---
