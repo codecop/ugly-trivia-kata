@@ -1,0 +1,23 @@
+1. have a look through
+
+- 1st cleanup
+2. fix all warnings/remove dead and commented out code
+3. fix typos
+
+- 2nd cleanup
+4. extract constants to better understanding, go through and do small things
+5. extract methods to small chunks, name accordingly
+
+- 3rd
+6. extract classes
+7. add tests to classes
+8. cleanup classes
+
+- 4th
+9. repeat steps 6-8
+10. bring remaining Game under test, mock the extracted classes
+
+- 5th
+11. bring output under test
+12. extract output into its own classes
+13. bring them under test, mock output in other places
