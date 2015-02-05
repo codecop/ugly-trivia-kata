@@ -9,8 +9,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class GameUiTest {
-
-    private GameUi gameUi = new GameUi();
+    ConsolePrinter consolePrinter = new ConsolePrinter();
+    private GameUi gameUi = new GameUi(consolePrinter);
 
     @Test
     public void correctAnswerShouldPrintAWinMessage() {

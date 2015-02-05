@@ -12,7 +12,8 @@ public class GameRunner {
     }
 
     public static void play(Random rand) {
-        PlayerUi playerUi = new PlayerUi();
+        ConsolePrinter consolePrinter = new ConsolePrinter();
+        PlayerUi playerUi = new PlayerUi(consolePrinter);
         Players players = new Players(playerUi);
         players.add("Chet");
         players.add("Pat");
@@ -22,7 +23,7 @@ public class GameRunner {
 
         Questions questions = new Questions();
 
-        GameUi gameUi = new GameUi();
+        GameUi gameUi = new GameUi(consolePrinter);
         Game aGame = new Game(currentPlayer, questions, gameUi);
 
         boolean notAWinner;

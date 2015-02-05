@@ -1,7 +1,11 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class GameUi {
-    ConsolePrinter consolePrinter = new ConsolePrinter();
+    private final ConsolePrinter consolePrinter;
+
+    public GameUi(ConsolePrinter consolePrinter) {
+        this.consolePrinter = consolePrinter;
+    }
 
     private void print(String msg) {
         consolePrinter.print(msg);

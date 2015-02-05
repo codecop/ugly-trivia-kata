@@ -9,7 +9,8 @@ public class PlayerUiTest {
 
     @Test
     public void shouldPrintACorrectAnswerMessageWhenScoring() {
-        final PlayerUi playerUi = new PlayerUi();
+        ConsolePrinter consolePrinter = new ConsolePrinter();
+        final PlayerUi playerUi = new PlayerUi(consolePrinter);
         new SystemOutCapture() {
             {
 

@@ -31,7 +31,8 @@ public class GameBuilder {
     }
 
     public static Game createGameWith(CurrentPlayer currentPlayer, Questions questions) {
-        GameUi ui = new GameUi();
+        ConsolePrinter consolePrinter = new ConsolePrinter();
+        GameUi ui = new GameUi(consolePrinter);
         return createGameWith(currentPlayer, questions, ui);
     }
 
