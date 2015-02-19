@@ -1,3 +1,23 @@
+Retro 19.02.2015 #15
+
+* we wanted to change the structure of the public API because it was bad.
+  but we could not because the tests fixed the functionality of the methods (not the implementation).
+  So maybe we should not have added tests for API if we might change it later.
+  A golden master would be much better until public API is stable.
+  Or we did consider it public API but it was not because play (takeTurn) is the main entry point.
+  -> maybe should have started with 1) Golden Master, 2) change API from outside, 3) add tests, 4) cleanup internals
+  But by cleaning internals we learned about the problem, so steps were important.
+  How can we know the API before we know the problem? Need BDUF? BAnalysisUF?
+
+* We extracted classes (that seemed reasonable), mocked them in tests and have nice unit tests.
+  The real thing is a bit complex (current/players/player/ui...), so stub is right way.
+  When we created the hierarchy it felt reasonable. We applied SRP and then DI.
+  Now a minor change in logic needs extra stubbing. That does not feel too good, "we are tying them together even more"
+  A class with mostly data (Player) was stubbed, but it has a single behaviour (showUi field).
+  Should we mock/stub a almost data only class?
+
+---
+
 Retro 05.02.2015 #13
 
 * Hard to get started, we had a philosophical discussion about why we are doing this exercise

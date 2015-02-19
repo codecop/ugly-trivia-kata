@@ -38,16 +38,21 @@ public class GamePenaltyTest {
 
     @Test
     public void playerInPenaltyBoxShouldAdvanceByOddEyesOfDice() {
+        // TODO as marker for weird stub/mock usage for data bean, see comments Retro 19.02.2015
+        when(currentPlayer.isGettingOutOfPenaltyBox()).thenReturn(true); // we need it true because it is set true
         int oddEyesOfDice = 1;
 
         game.takeTurn(oddEyesOfDice);
 
+        verify(currentPlayer).willGetOutOfPenaltyBox(); // sets it true, see when
         verify(currentPlayer).advanceBy(oddEyesOfDice);
     }
 
     @Test
     // TODO (nothing new, skipped) add a direct capture test to Ui test and create interaction test here
     public void playerInPenaltyBoxShouldBeAskedQuestionOnOddDice() {
+        // TODO as marker for weird stub/mock usage for data bean, see comments Retro 19.02.2015
+        when(currentPlayer.isGettingOutOfPenaltyBox()).thenReturn(true); // we need it true because it is set true
         new SystemOutCapture() {
             {
                 when(questions.nextFor(any(Category.class))).thenReturn("Pop Question 1");
@@ -58,6 +63,7 @@ public class GamePenaltyTest {
                 assertThat(capturedSystemOutLines(), hasItems("Pop Question 1"));
             }
         }.resetSystemOut();
+        verify(currentPlayer).willGetOutOfPenaltyBox(); // sets it true, see when
     }
 
     @Test

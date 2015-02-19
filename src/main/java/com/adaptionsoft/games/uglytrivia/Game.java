@@ -16,31 +16,40 @@ public class Game {
 
     void takeTurn(int eyesOfDice) {
         currentPlayer.hasRolled(eyesOfDice);
-
-        // handlePenalty();
-
-
-        if (currentPlayer.isInPenaltyBox()) {
-            if (!isOdd(eyesOfDice)) {
-                currentPlayer.willStayInPenaltyBox();
-                return;
-            }
-
-            currentPlayer.willGetOutOfPenaltyBox();
-        }
+        handlePenalty(eyesOfDice);
         advanceBy(eyesOfDice);
         askQuestion();
     }
 
-    private void advanceBy(int eyesOfDice) {
-        currentPlayer.advanceBy(eyesOfDice);
+    private void handlePenalty(int eyesOfDice) {
+        // TODO NEXT - feature envy move into player completely (tests will break)
+        if (currentPlayer.isInPenaltyBox()) {
+            if (!isOdd(eyesOfDice)) {
+                currentPlayer.willStayInPenaltyBox();
+            } else {
+                currentPlayer.willGetOutOfPenaltyBox();
+            }
+        }
     }
 
     private boolean isOdd(int eyesOfDice) {
         return eyesOfDice % 2 != 0;
     }
 
+    private void advanceBy(int eyesOfDice) {
+        // TODO NEXT - feature envy move into player completely (tests will break)
+        if (currentPlayer.isInPenaltyBox() && !currentPlayer.isGettingOutOfPenaltyBox()) {
+            return;
+        }
+
+        currentPlayer.advanceBy(eyesOfDice);
+    }
+
     private void askQuestion() {
+        if (currentPlayer.isInPenaltyBox() && !currentPlayer.isGettingOutOfPenaltyBox()) {
+            return;
+        }
+
         Category currentCategory = currentPlayer.currentCategory();
         showGame.question(currentCategory.displayName(), questions.nextFor(currentCategory));
     }
