@@ -16,6 +16,11 @@ Retro 19.02.2015 #15
   A class with mostly data (Player) was stubbed, but it has a single behaviour (showUi field).
   Should we mock/stub a almost data only class?
 
+* We did not take a break. Maybe we should have at least after 60 minutes.
+* Today more discussion than work
+* Although Peter is typing less when using the small computer, but still we typed at the same time at least 3 times.
+  -> find setting/tool that shows that someone is typing?
+
 ---
 
 Retro 05.02.2015 #13
