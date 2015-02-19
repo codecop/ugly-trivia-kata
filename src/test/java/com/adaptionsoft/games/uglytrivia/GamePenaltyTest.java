@@ -31,7 +31,7 @@ public class GamePenaltyTest {
     public void playerInPenaltyBoxShouldGetOutOnOddDice() {
         int oddEyesOfDice = 1;
 
-        game.play(oddEyesOfDice);
+        game.takeTurn(oddEyesOfDice);
 
         verify(currentPlayer).willGetOutOfPenaltyBox();
     }
@@ -40,7 +40,7 @@ public class GamePenaltyTest {
     public void playerInPenaltyBoxShouldAdvanceByOddEyesOfDice() {
         int oddEyesOfDice = 1;
 
-        game.play(oddEyesOfDice);
+        game.takeTurn(oddEyesOfDice);
 
         verify(currentPlayer).advanceBy(oddEyesOfDice);
     }
@@ -53,7 +53,7 @@ public class GamePenaltyTest {
                 when(questions.nextFor(any(Category.class))).thenReturn("Pop Question 1");
                 int oddEyesOfDice = 1;
 
-                game.play(oddEyesOfDice);
+                game.takeTurn(oddEyesOfDice);
 
                 assertThat(capturedSystemOutLines(), hasItems("Pop Question 1"));
             }
@@ -64,7 +64,7 @@ public class GamePenaltyTest {
     public void playerInPenaltyBoxShouldNotGetOutOnEvenDice() {
         int evenEyesOfDice = 2;
 
-        game.play(evenEyesOfDice);
+        game.takeTurn(evenEyesOfDice);
 
         verify(currentPlayer).willStayInPenaltyBox();
     }
@@ -73,7 +73,7 @@ public class GamePenaltyTest {
     public void playerInPenaltyBoxShouldNeverAdvanceOnEvenEyesOfDice() {
         int evenEyesOfDice = 2;
 
-        game.play(evenEyesOfDice);
+        game.takeTurn(evenEyesOfDice);
 
         verify(currentPlayer, never()).advanceBy(any(Integer.class));
     }

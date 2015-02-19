@@ -23,7 +23,7 @@ public class GamePlayTest {
     public void playerShouldAdvanceByEyesOfDice() {
         int eyesOfDice = 3;
 
-        game.play(eyesOfDice);
+        game.takeTurn(eyesOfDice);
 
         verify(currentPlayer).advanceBy(eyesOfDice);
     }
@@ -36,7 +36,7 @@ public class GamePlayTest {
         when(questions.nextFor(any(Category.class))).thenReturn(nextQuestion);
         int anyEye = 0;
 
-        game.play(anyEye);
+        game.takeTurn(anyEye);
 
         verify(GameBuilder.mockedUi()).question(anyCategory.displayName(), nextQuestion);
     }
@@ -46,7 +46,7 @@ public class GamePlayTest {
         when(currentPlayer.currentCategory()).thenReturn(Category.POP);
         int anyEye = 7;
 
-        game.play(anyEye);
+        game.takeTurn(anyEye);
 
         verify(questions).nextFor(Category.POP);
     }

@@ -14,32 +14,30 @@ public class Game {
         this.showGame = showGame;
     }
 
-    public void play(int eyesOfDice) {
-        currentPlayer.play(eyesOfDice);        
+    void takeTurn(int eyesOfDice) {
+        currentPlayer.hasRolled(eyesOfDice);
+
+        // handlePenalty();
+
 
         if (currentPlayer.isInPenaltyBox()) {
-            playWithPenalty(eyesOfDice);
-        } else {
-            moveAndAskQuestionFor(eyesOfDice);
+            if (!isOdd(eyesOfDice)) {
+                currentPlayer.willStayInPenaltyBox();
+                return;
+            }
+
+            currentPlayer.willGetOutOfPenaltyBox();
         }
+        advanceBy(eyesOfDice);
+        askQuestion();
     }
 
-    private void playWithPenalty(int eyesOfDice) {
-        if (isOdd(eyesOfDice)) {
-            currentPlayer.willGetOutOfPenaltyBox();
-            moveAndAskQuestionFor(eyesOfDice);
-        } else {
-            currentPlayer.willStayInPenaltyBox();
-        }
+    private void advanceBy(int eyesOfDice) {
+        currentPlayer.advanceBy(eyesOfDice);
     }
 
     private boolean isOdd(int eyesOfDice) {
         return eyesOfDice % 2 != 0;
-    }
-
-    private void moveAndAskQuestionFor(int eyesOfDice) {
-        currentPlayer.advanceBy(eyesOfDice);
-        askQuestion();
     }
 
     private void askQuestion() {
@@ -47,7 +45,7 @@ public class Game {
         showGame.question(currentCategory.displayName(), questions.nextFor(currentCategory));
     }
 
-    public boolean correctAnswer() {
+    boolean correctAnswer() {
         if (currentPlayer.isInPenaltyBox()) {
             return correctAnswerInPenaltyBox();
         } else {
@@ -79,7 +77,7 @@ public class Game {
         return notWinner;
     }
 
-    public boolean wrongAnswer() {
+    boolean wrongAnswer() {
         showGame.wrongAnswer();
         currentPlayer.goToPenaltyBox();
 
@@ -87,10 +85,11 @@ public class Game {
     }
 
     public void play(Random rand) {
+        // TODO (nothing new, skipped) bring under test with stubbed random
         boolean notAWinner;
         do {
 
-            play(rand.nextInt(5) + 1);
+            takeTurn(rand.nextInt(5) + 1);
 
             if (rand.nextInt(9) == 7) {
                 notAWinner = wrongAnswer();
@@ -101,9 +100,8 @@ public class Game {
         } while (notAWinner);
         /*
         TODO NEXT restructure methods to be either high or low level so we can see the algorithm - maybe done?
-        add tests with stubbed random
         make all called methods private
-        rename all called methods, e.g. play is twice
+        rename all called methods, e.g. hasRolled is twice
          */
     }
 

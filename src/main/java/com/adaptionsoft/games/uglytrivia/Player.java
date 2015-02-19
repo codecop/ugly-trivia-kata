@@ -72,7 +72,7 @@ public class Player {
         return name;
     }
 
-    public void play(int eyesOfDice) {
+    public void hasRolled(int eyesOfDice) {
         showPlayer.beginTurn(name, eyesOfDice);
     }
 }

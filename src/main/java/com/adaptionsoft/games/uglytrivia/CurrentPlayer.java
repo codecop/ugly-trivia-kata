@@ -60,7 +60,7 @@ public class CurrentPlayer {
         getCurrentPlayer().setGettingOutOfPenaltyBox(false);
     }
 
-    public void play(int eyesOfDice) {
-        getCurrentPlayer().play(eyesOfDice);
+    public void hasRolled(int eyesOfDice) {
+        getCurrentPlayer().hasRolled(eyesOfDice);
     }
 }
