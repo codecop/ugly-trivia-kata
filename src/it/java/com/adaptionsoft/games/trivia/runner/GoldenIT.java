@@ -11,7 +11,7 @@ import org.junit.runners.Parameterized.Parameters;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class GoldenTest {
+public class GoldenIT {
 
     @Parameters
     public static Collection<Object[]> data() throws IOException {
@@ -23,7 +23,7 @@ public class GoldenTest {
     private String expectedOutput;
     private String actualOutput;
 
-    public GoldenTest(String expectedOutput, String gameOutput) {
+    public GoldenIT(String expectedOutput, String gameOutput) {
         this.expectedOutput = expectedOutput;
         this.actualOutput = gameOutput;
     }
