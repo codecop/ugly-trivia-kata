@@ -24,14 +24,12 @@ We did the kata for 15 or 16 sessions, around 40 hours of testing and refactorin
 * TODOs are valuable for getting started next time.
 
 ### Fixing Implementation ###
-
-  maybe staying with Golden Master gives us freedom to change more.
-* Idea: stay with golden master much longer until API emerges.
 * Maybe the tests are too connected to the implementation.
-
-  but we could not because the tests fixed the functionality of the methods (not the implementation).
-  So maybe we should not have added tests for API if we might change it later.
-  A golden master would be much better until public API is stable.
+* we could not change because the tests fixed the functionality of the methods (not the implementation).
+* So maybe we should not have added tests for API if we might change it later.
+* maybe staying with Golden Master gives us freedom to change more.
+* Idea: stay with golden master much longer until API emerges.
+* A golden master would be much better until public API is stable.
 
 ### Open Issues ###
 * feature envy to player, fix will break tests - so reluctant to do it
