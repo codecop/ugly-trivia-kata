@@ -8,12 +8,15 @@ Steps of cleaning up a legacy code base
 
 1st iteration "cleanup"
 -----------------------
-2. fix all warnings/remove dead and commented out code
+2. fix all warnings
+   remove dead and commented out code
 3. fix typos
 
 2nd iteration "more cleanup"
 ----------------------------
-4. extract constants to better understanding, go through and do small things
+4. go through and do small things
+   rename lokal and private things
+   extract constants to better understanding
 5. extract methods to small chunks, name accordingly
 
 3rd iteration 
